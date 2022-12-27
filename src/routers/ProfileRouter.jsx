@@ -1,7 +1,7 @@
 import React, {} from "react";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {MAIN_URL} from "../constants";
-import ProfilePage from "../pages/Profile/";
+import ProfilePage from "../pages/Profile/OutputRequestsContainer";
 
 
 const ProfileRouter = () => {
