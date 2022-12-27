@@ -1,6 +1,6 @@
 import React from "react";
 import OutputRequestsSearchField from "./ChildComponents/OutputRequestsSearchField";
-import OutputRequestsFilterButtons from "./ChildComponents/OutputRequestsFilterButtons";
+import OutputRequestsFilterButtons from "./ChildComponents/OutputRequestsFilterButtons/OutputRequestsFilterButtons";
 import RenderAllOutputRequests from "./ChildComponents/RenderAllOutputRequests";
 
 let OutputRequests = () => { // список всех подкомпонент для исходящих запросов
