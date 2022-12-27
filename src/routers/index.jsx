@@ -10,11 +10,10 @@ const MainRouter = () => {
         <div className={styles.app_wrapper_menu_left}>Часть меню</div>
         <div className={styles.app_wrapper_header}>Часть header</div>
         <div className={styles.app_wrapper_content}>
-            Часть контента
-{/*            <Switch>
+            <Switch>
                 <Route path={MAIN_URL.PROFILE} component={ProfileRouter}/>
                 <Redirect to={MAIN_URL.PROFILE}/>
-            </Switch>*/}
+            </Switch>
         </div>
 
     </div>
