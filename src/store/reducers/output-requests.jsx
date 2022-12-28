@@ -18,6 +18,7 @@ export const OutputRequestsReducer = (state = initialState, action) => {
                 ...state, // копия всего стейта
                 initialisedApp: true, // смена флага инициализации приложения на true
             }
+            return stateCopy;
         default:
             return state; // возврат по умолчанию
     }
