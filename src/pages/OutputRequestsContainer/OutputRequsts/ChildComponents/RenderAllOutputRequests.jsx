@@ -1,7 +1,7 @@
 import React from "react";
 import SingleOutputRequest from "./SingleOutputRequest/SingleOutputRequest";
 
-let RenderAllOutputRequests = ({removeOutputRequest}) => {
+let RenderAllOutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest}) => {
     // компонента заголовков таблицы исходящих запросов, возможно уберу как отдельную компонету
     return <div>
         <div>"RenderAllOutputRequests"</div>
@@ -9,6 +9,8 @@ let RenderAllOutputRequests = ({removeOutputRequest}) => {
         <div>"map SingleOutputRequest"
             <SingleOutputRequest
                 removeOutputRequest={removeOutputRequest}
+                markAsArchived={markAsArchived}
+                repeatRequest={repeatRequest}
             /></div>
     </div>
 }

@@ -1,13 +1,19 @@
-.outputRequestMenuGrid {
+.outputRequestMenuItem {
     display: grid;
-    grid-template-columns: 40px 100px;
+    grid-template-columns: 60px 100px;
     padding: 20px;
-    margin: 20px
+    margin: 20px;
 }
 .textInMenu {
-    padding-top:13px
+    padding-top:8px
 }
 .iconMenu {
     width: 30px;
-    padding-top:10px
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-left:10px;
+}
+
+.MenuClass {
+    margin: 0px;
 }
