@@ -1,8 +1,7 @@
 .outputRequestMenuItem {
     display: grid;
     grid-template-columns: 60px 100px;
-    padding: 20px;
-    margin: 20px;
+
 }
 .textInMenu {
     padding-top:8px

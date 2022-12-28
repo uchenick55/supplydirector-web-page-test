@@ -5,14 +5,14 @@ import OutputRequests from "./OutputRequsts/OutputRequests";
 
 class OutputRequestsContainer extends React.Component {
     // здесь мы получаем данные через коннект из стора и передаем в дочерние компоненты
-    removeOutputRequest = () => { // функция удаления исходящего запроса
-        alert("delete output Request from OutputRequestsContainer");
+    removeOutputRequest = (idRequest) => { // функция удаления исходящего запроса
+        alert("Удаление исходящего запроса номер " + idRequest);
     }
-    markAsArchived = () => { // отметить как запрос как архивный
-        alert("mark as archived from OutputRequestsContainer");
+    markAsArchived = (idRequest) => { // отметить как запрос как архивный
+        alert("Пометить исходящий запрос номер " + idRequest + " как архивный" );
     }
-    repeatRequest = () => { // повторить исходящий запрос
-        alert("repeat request from OutputRequestsContainer");
+    repeatRequest = (idRequest) => { // повторить исходящий запрос
+        alert("повторить запрос номер " + idRequest);
 
     }
     render() {
@@ -22,9 +22,17 @@ class OutputRequestsContainer extends React.Component {
                 removeOutputRequest={this.removeOutputRequest}
                 markAsArchived={this.markAsArchived}
                 repeatRequest={this.repeatRequest}
+                outputRequestsArray={this.props.outputRequestsArray}
             />
         </div>
     }
 }
 
-export default connect(null, null)(OutputRequestsContainer)
+let mapStateToProps = (state) => {
+    return {
+        outputRequestsArray: state.outputRequests.outputRequestsArray,
+    }
+}
+
+
+export default connect(mapStateToProps, null)(OutputRequestsContainer)

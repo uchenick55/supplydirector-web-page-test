@@ -10,56 +10,49 @@ import detailed from "../../../../../../assets/media/icons/dropdown-menu/detaile
 import styles from "./OutputRequestMenu.module.css"
 import {Redirect} from 'react-router-dom';
 
-
-const OutputRequestMenu = ({removeOutputRequest, markAsArchived, repeatRequest}) => {
-
-    let CommonMenuItem = ({text, action, picSrc, key}) => {
-        return <>
-            <MenuItem
-                className={styles.outputRequestMenuItem}
-                key={key} // было в исходном коде, пока оставил
-                onClick={() => {
-                    action(); // вызов функции обработчика из контейнерной компоненты
-                }}>
-            <span className={styles.iconMenu}>
-                <img src={picSrc} alt=""/>
-            </span>
-                <span className={styles.textInMenu}>{text}</span> {/*Текст пункта меню*/}
-            </MenuItem>
-        </>
-    }
-
+const OutputRequestMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idRequest, name}) => {
     let detailedRequest = () => {
         alert("переход на страницу Подробнее из локальной функции ")
         return <Redirect to="/somewhere/else"/>
         // перенаправление на другую страницу (работал с Navlink вместо Redirect - другая версия react-router-dom),
     }
+    let localMenuDataArray = [ // локальный массив объектов, с данными меню для map
+        {idMenu: 1, action: removeOutputRequest, text: "Удалить", picSrc: remove},
+        {idMenu: 2, action: markAsArchived, text: "В архив", picSrc: archive},
+        {idMenu: 3, action: repeatRequest, text: "Повторить", picSrc: repeat},
+        {idMenu: 4, action: detailedRequest, text: "Подробнее", picSrc: detailed},
+    ]
+
+    let CommonMenuItem = ({text, action, picSrc, idMenu}) => {
+        try {
+            return <div key={ idMenu.toString() + idRequest.toString() }>
+                <MenuItem
+                    className={styles.outputRequestMenuItem}
+                    onClick={() => {
+                        action(idRequest); // вызов функции обработчика из контейнерной компоненты
+                    }}>
+            <span className={styles.iconMenu}>
+                <img src={picSrc} alt=""/>
+            </span>
+                    <span className={styles.textInMenu}>{text}</span> {/*Текст пункта меню*/}
+                </MenuItem>
+            </div>
+        } catch (error) { // поймать ошибку в выводе пользователей
+            // console.log(error) // вывести ее в консоль
+        }
+    }
+
     const menu = (
         <Menu>
-            <CommonMenuItem
-                action={removeOutputRequest} // экшн удаление Output Request
-                text={"Удалить"}
-                picSrc={remove} // куртинка удалить
-                key="removeOutputRequest" // ключ, пока оставил, возможно пригодится
-            />
-            <CommonMenuItem
-                action={markAsArchived} // экшн пометки как архивный
-                text={"В архив"}
-                picSrc={archive} // куртинка удалить
-                key="markAsArchived" // ключ, пока оставил, возможно пригодится
-            />
-            <CommonMenuItem
-                action={repeatRequest} // экшн повторить исходящий запрос
-                text={"Повторить"}
-                picSrc={repeat} // куртинка удалить
-                key="repeatRequest" // ключ, пока оставил, возможно пригодится
-            />
-            <CommonMenuItem
-                action={detailedRequest} // экшн повторить исходящий запрос
-                text={"Подробнее"}
-                picSrc={detailed} // куртинка удалить
-                key="detailedRequest" // ключ, пока оставил, возможно пригодится
-            />
+            {localMenuDataArray.map((l)=>{ // перебираем пункты меню из таблицы localMenuDataArray
+               return <CommonMenuItem // отрисовка общей части отрисовки каждого пункта меню с изменяющимися данными
+                    key={l.idMenu} //
+                    action={l.action} // экшн Output Request
+                    text={l.text}
+                    picSrc={l.picSrc} // картинка удалить
+                    idMenu={l.idMenu}
+                />
+            })}
         </Menu>
     );
 
@@ -69,7 +62,7 @@ const OutputRequestMenu = ({removeOutputRequest, markAsArchived, repeatRequest})
                 <Dropdown // основная частьвыпадающего меню
                     overlay={menu} // имя меню, которое мы вызываем
                     animation="slide-up" // анимация или появление сразу
-                    // trigger={["click"]} меню отображается по клику или по умолчанию - по наведению, пока не нужно
+                    trigger={["click"]} // меню отображается по клику или по умолчанию - по наведению, пока не нужно
                     // onVisibleChange={onVisibleChange} срабатывает при появлении/скрывании меню - пока не нужно
                 >
                     <img // та картинка (многоточие) которое представляет меню

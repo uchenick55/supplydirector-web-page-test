@@ -3,7 +3,7 @@ import OutputRequestsSearchField from "./ChildComponents/OutputRequestsSearchFie
 import OutputRequestsFilterButtons from "./ChildComponents/OutputRequestsFilterButtons/OutputRequestsFilterButtons";
 import RenderAllOutputRequests from "./ChildComponents/RenderAllOutputRequests";
 
-let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest}) => { // список всех подкомпонент для исходящих запросов
+let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray}) => { // список всех подкомпонент для исходящих запросов
     return <div>
         <div>"OutputRequests"</div>
         <div><OutputRequestsSearchField/></div>
@@ -12,6 +12,7 @@ let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest}) => {
             removeOutputRequest={removeOutputRequest}
             markAsArchived={markAsArchived}
             repeatRequest={repeatRequest}
+            outputRequestsArray={outputRequestsArray}
         /></div>
     </div>
 }
