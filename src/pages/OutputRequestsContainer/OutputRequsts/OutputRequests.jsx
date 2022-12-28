@@ -3,12 +3,14 @@ import OutputRequestsSearchField from "./ChildComponents/OutputRequestsSearchFie
 import OutputRequestsFilterButtons from "./ChildComponents/OutputRequestsFilterButtons/OutputRequestsFilterButtons";
 import RenderAllOutputRequests from "./ChildComponents/RenderAllOutputRequests";
 
-let OutputRequests = () => { // список всех подкомпонент для исходящих запросов
+let OutputRequests = ({removeOutputRequest}) => { // список всех подкомпонент для исходящих запросов
     return <div>
         <div>"OutputRequests"</div>
         <div><OutputRequestsSearchField/></div>
         <div><OutputRequestsFilterButtons/></div>
-        <div><RenderAllOutputRequests/></div>
+        <div><RenderAllOutputRequests
+            removeOutputRequest={removeOutputRequest}
+        /></div>
     </div>
 }
 

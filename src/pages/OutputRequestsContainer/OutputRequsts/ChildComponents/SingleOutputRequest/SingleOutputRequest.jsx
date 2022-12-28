@@ -1,9 +1,12 @@
 import React from "react";
-import OutputRequestMenu from "./OutputRequestMenu";
+import OutputRequestMenu from "./OutputRequestMenu/OutputRequestMenu";
 
-let SingleOutputRequest = () => {
+let SingleOutputRequest = ({removeOutputRequest}) => {
     return <div>
-        <div>"SingleOutputRequest" + <OutputRequestMenu/></div>
+        <div>"SingleOutputRequest" +
+            <OutputRequestMenu
+                removeOutputRequest={removeOutputRequest} // колбек удаления outputRequest из стейта
+            /></div>
     </div>
 }
 

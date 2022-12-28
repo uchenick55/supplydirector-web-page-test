@@ -5,10 +5,15 @@ import OutputRequests from "./OutputRequsts/OutputRequests";
 
 class OutputRequestsContainer extends React.Component {
     // здесь мы получаем данные через коннект из стора и передаем в дочерние компоненты
+    removeOutputRequest = () => {
+        alert("delete output Request in container component");
+    }
     render() {
         return <div className={styles.container}>
             "OutputRequestsContainer"
-            <OutputRequests/>
+            <OutputRequests
+                removeOutputRequest={this.removeOutputRequest}
+            />
         </div>
     }
 }
