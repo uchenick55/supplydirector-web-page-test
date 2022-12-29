@@ -3,7 +3,8 @@ import SingleOutReq from "./SingleOutputRequest/SingleOutReq";
 import styles from "./../ChildComponents/SingleOutputRequest/SingleOutReq.module.css"
 
 
-let RenderAllOutReq = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray, outReqArrayHeaders}) => {
+let RenderAllOutReq = ({removeOutputRequest, markAsArchived, repeatRequest,
+                           outputRequestsArray, outReqArrayHeaders, outRecActiveHeader}) => {
     // компонента заголовков таблицы исходящих запросов, возможно уберу как отдельную компонету
     let outputRequestsElements = outputRequestsArray.map((d) => // подкомпонента отрисовки всех диалогов через map
         {
@@ -16,17 +17,20 @@ let RenderAllOutReq = ({removeOutputRequest, markAsArchived, repeatRequest, outp
             />
         }
     );
-    let renderOutReqArrayHeaders =
-        <div className={styles.headersOutputRequests}>
-            <div>{outReqArrayHeaders.date}</div>
+    let RrenderOutReqArrayHeaders = () => {
+        return  <div
+            className={styles.headersOutputRequests}>
+            <div className={styles.outRecActiveHeader}>{outReqArrayHeaders.date}</div>
             <div>{outReqArrayHeaders.name}</div>
             <div>{outReqArrayHeaders.qty}</div>
             <div>{outReqArrayHeaders.cost}</div>
             <div>{outReqArrayHeaders.answers}</div>
         </div>
+    }
+
 
     return (<div>
-        <div>{renderOutReqArrayHeaders}</div> {/*отрисовка заголовков*/}
+        <div><RrenderOutReqArrayHeaders/></div> {/*отрисовка заголовков*/}
         <div>
             {outputRequestsElements} {/* Отрисовка исходящих запросов*/}
         </div>

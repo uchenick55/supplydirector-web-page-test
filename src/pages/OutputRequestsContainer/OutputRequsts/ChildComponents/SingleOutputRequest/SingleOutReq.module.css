@@ -15,6 +15,7 @@
     grid-template-rows: 30px;
     padding-top: 20px;
     padding-left: 40px;
+    color: #7f8a9b;
 }
 .responcesImgStyle {
     width: 140px;
@@ -32,4 +33,12 @@
     padding-top: 15px;
     cursor: pointer;
 
+}
+
+.outRecActiveHeader {
+    color: #6266eb
+}
+
+.outRecInActiveHeader {
+    color: #6266eb
 }

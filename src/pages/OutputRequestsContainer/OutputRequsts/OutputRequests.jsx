@@ -5,10 +5,11 @@ import RenderAllOutReq from "./ChildComponents/RenderAllOutReq";
 import styles from "./OutReq.module.css"
 
 
-let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray, outReqArrayHeaders}) => { // список всех подкомпонент для исходящих запросов
+let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray,
+                          outReqArrayHeaders, outRecActiveHeader, setOutReqFormData}) => { // список всех подкомпонент для исходящих запросов
     return <div className={styles.outputRequestsGrid}>
         <div><h2>Исходящие запросы</h2></div>
-        <div><OutReqSearchField/></div>
+        <div><OutReqSearchField setOutReqFormData={setOutReqFormData} /></div>
         <div><OutReqFilterButtons/></div>
         <div><RenderAllOutReq
             removeOutputRequest={removeOutputRequest}
@@ -16,6 +17,7 @@ let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outpu
             repeatRequest={repeatRequest}
             outputRequestsArray={outputRequestsArray}
             outReqArrayHeaders={outReqArrayHeaders}
+            outRecActiveHeader={outRecActiveHeader}
         /></div>
     </div>
 }

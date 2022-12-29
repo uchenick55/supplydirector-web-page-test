@@ -15,6 +15,10 @@ class OutReqContainer extends React.Component {
         alert("повторить запрос номер " + idRequest);
 
     }
+    setOutReqFormData = (outReqSearchFieldData) => { // повторить исходящий запрос
+        console.log(outReqSearchFieldData);
+
+    }
     render() {
         return <div className={styles.container}>
             <OutputRequests
@@ -23,6 +27,8 @@ class OutReqContainer extends React.Component {
                 repeatRequest={this.repeatRequest}
                 outputRequestsArray={this.props.outputRequestsArray}
                 outReqArrayHeaders={this.props.outReqArrayHeaders}
+                outRecActiveHeader={this.props.outRecActiveHeader}
+                setOutReqFormData={this.setOutReqFormData}
             />
         </div>
     }
@@ -30,8 +36,9 @@ class OutReqContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        outputRequestsArray: state.outputRequests.outputRequestsArray,
-        outReqArrayHeaders: state.outputRequests.outputRequestsArrayHeaders,
+        outputRequestsArray: state.outputRequests.outputRequestsArray, // массив исходящих запросов
+        outReqArrayHeaders: state.outputRequests.outputRequestsArrayHeaders, // массив заголовков
+        outRecActiveHeader: state.outputRequests.outRecActiveHeader, // текущий активный заголовок
     }
 }
 
