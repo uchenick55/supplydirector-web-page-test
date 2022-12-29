@@ -28,7 +28,7 @@ export const Input = ({input, meta, ...restProps}) => {
                 <input {...input} // формат задан в redux field validation
                           placeholder={restProps.placeholder} // проброс пропсов с плейсхолдером
                           className={isError?classes.InputError:classes.Input}
-                    //границу login подсветить красным если ошибка в meta
+                    //границу подсветить красным если ошибка в meta
                 />
             </span>
             <div >

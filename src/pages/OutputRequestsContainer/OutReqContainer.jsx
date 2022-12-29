@@ -16,7 +16,8 @@ class OutReqContainer extends React.Component {
 
     }
     setOutReqFormData = (outReqSearchFieldData) => { // повторить исходящий запрос
-        console.log(outReqSearchFieldData);
+        if (outReqSearchFieldData)
+        {console.log(outReqSearchFieldData);}
 
     }
     render() {

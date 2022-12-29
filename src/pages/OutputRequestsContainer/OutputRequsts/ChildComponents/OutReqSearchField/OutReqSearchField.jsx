@@ -7,7 +7,7 @@ import search from "../../../../../assets/media/icons/search.jpg"
 const OutReqSearchFieldForm = ({handleSubmit, error}) => { // компонента формы
     return (
         <form onSubmit={handleSubmit}/*привязка сабмита формы к внутренней функции reduxForm - handleSubmit*/>
-            <div className={styles.loginForm}>
+            <div className={styles.gridForm}>
                 <div className={styles.imgSearch}><img src={search} alt="search"/></div>
                 <div className={styles.fieldSetStyle}>
                     <div>
@@ -37,7 +37,7 @@ let OutReqSearchField = ({setOutReqFormData}) => {
             setOutReqFormData(formData.outReqSearchFieldData)
     }
     return (
-        <div className={styles.loginCommon}/*стиль*/ >
+        <div className={styles.formCommon}/*стиль*/ >
             <div >
                 <div><OutReqSearchFieldReduxForm
                     onChange={onChange}

@@ -1,12 +1,8 @@
-.loginCommon {
+.formCommon {
     border-color: #cfd3da;
-/*    border-width: 2px;
-    outline: #1F1AB2;*/
-
 }
 
-
-.loginForm {
+.gridForm {
     display: grid;
     grid-template-columns: 40px 1fr;
 }

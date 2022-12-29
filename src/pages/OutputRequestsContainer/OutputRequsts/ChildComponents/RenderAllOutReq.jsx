@@ -1,6 +1,7 @@
 import React from "react";
 import SingleOutReq from "./SingleOutputRequest/SingleOutReq";
 import styles from "./../ChildComponents/SingleOutputRequest/SingleOutReq.module.css"
+import sort from "../../../../assets/media/icons/sort.jpg"
 
 
 let RenderAllOutReq = ({removeOutputRequest, markAsArchived, repeatRequest,
@@ -20,7 +21,13 @@ let RenderAllOutReq = ({removeOutputRequest, markAsArchived, repeatRequest,
     let RrenderOutReqArrayHeaders = () => {
         return  <div
             className={styles.headersOutputRequests}>
-            <div className={styles.outRecActiveHeader}>{outReqArrayHeaders.date}</div>
+            <div
+                className={styles.outRecActiveHeader}
+                onClick={()=>{alert("сортировка по Дате")}}
+            >
+                {outReqArrayHeaders.date}
+                <img src={sort} alt="sort by Name"/>
+            </div>
             <div>{outReqArrayHeaders.name}</div>
             <div>{outReqArrayHeaders.qty}</div>
             <div>{outReqArrayHeaders.cost}</div>
