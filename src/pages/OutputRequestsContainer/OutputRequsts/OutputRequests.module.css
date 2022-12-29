@@ -1,0 +1,9 @@
+h2 {
+    padding: 0px;
+    text-align: left;
+}
+
+.outputRequestsGrid {
+    display: grid;
+    grid-template-rows: 50px 70px 80px;
+}

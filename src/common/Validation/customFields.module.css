@@ -17,6 +17,8 @@
 
 .Input {
     width: 100%;
+    outline:none;
+    border-width: 0px; /*спрятать внешнюю рамку Input*/
 }
 
 .InputError {
