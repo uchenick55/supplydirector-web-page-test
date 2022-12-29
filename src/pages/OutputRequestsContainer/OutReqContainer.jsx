@@ -12,9 +12,6 @@ class OutReqContainer extends React.Component {
             initialisedApp: false, // имитация инициализации приложения
         };
     }
-    componentDidMount() {
-
-    }
 
     // здесь мы получаем данные через коннект из стора и передаем в дочерние компоненты
     removeOutputRequest = (idRequest) => { // функция удаления исходящего запроса
@@ -27,26 +24,25 @@ class OutReqContainer extends React.Component {
         alert("повторить запрос номер " + idRequest);
 
     }
-    setOutReqFormData = (outReqSearchFieldData) => { // повторить исходящий запрос
+    setOutReqFormData = (outReqSearchFieldData) => { // ввод в поисковой строке отображается в консоли
         if (outReqSearchFieldData)
         {console.log(outReqSearchFieldData);}
 
     }
     render() {
         if (!this.state.initialisedApp) { // если приложение еще не инициализировано
-            setTimeout(()=>{this.setState({initialisedApp: true})}, 2000)
+            setTimeout(()=>{this.setState({initialisedApp: true})}, 1000) // задержка
             return <img className={styles.preloader} src={preloader} alt="Подождите"/> // показать статус загрузки
         }
 
         return <div className={styles.container}>
             <OutputRequests
-                removeOutputRequest={this.removeOutputRequest}
-                markAsArchived={this.markAsArchived}
-                repeatRequest={this.repeatRequest}
-                outputRequestsArray={this.props.outputRequestsArray}
-                outReqArrayHeaders={this.props.outReqArrayHeaders}
-                outRecActiveHeader={this.props.outRecActiveHeader}
-                setOutReqFormData={this.setOutReqFormData}
+                removeOutputRequest={this.removeOutputRequest} // колбек удаления исходящих запросов
+                markAsArchived={this.markAsArchived} // отметить как архивный, привел к контейнерному из обработчика
+                repeatRequest={this.repeatRequest} // повторить запрос - привел к контейнерному компонету
+                outputRequestsArray={this.props.outputRequestsArray} // весь массив исходящих запросов
+                outReqArrayHeaders={this.props.outReqArrayHeaders} // массив заголовков из стейта
+                setOutReqFormData={this.setOutReqFormData}// ввод в поисковой строке, пока поднял в контейнерную компоненту и вывел в консоль
             />
         </div>
     }
@@ -56,7 +52,6 @@ let mapStateToProps = (state) => {
     return {
         outputRequestsArray: state.outputRequests.outputRequestsArray, // массив исходящих запросов
         outReqArrayHeaders: state.outputRequests.outputRequestsArrayHeaders, // массив заголовков
-        outRecActiveHeader: state.outputRequests.outRecActiveHeader, // текущий активный заголовок
     }
 }
 

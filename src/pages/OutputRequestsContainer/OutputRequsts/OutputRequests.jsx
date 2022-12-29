@@ -6,18 +6,18 @@ import styles from "./OutReq.module.css"
 
 
 let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray,
-                          outReqArrayHeaders, outRecActiveHeader, setOutReqFormData}) => { // список всех подкомпонент для исходящих запросов
+                          outReqArrayHeaders, setOutReqFormData}) => { // список всех подкомпонент для исходящих запросов
     return <div className={styles.outputRequestsGrid}>
-        <div><h2>Исходящие запросы</h2></div>
-        <div><OutReqSearchField setOutReqFormData={setOutReqFormData} /></div>
-        <div><OutReqFilterButtons/></div>
-        <div><RenderAllOutReq
+        <div><h2>Исходящие запросы</h2></div> {/*заголовок*/}
+        <div><OutReqSearchField setOutReqFormData={setOutReqFormData} /></div> {/*отрисовка поисковой строки*/}
+        <div><OutReqFilterButtons/></div>{/*отрисовка кнопок фильтрации*/}
+        <div>{/*отрисовка исходящих запросов с заголовками*/}
+            <RenderAllOutReq
             removeOutputRequest={removeOutputRequest}
             markAsArchived={markAsArchived}
             repeatRequest={repeatRequest}
             outputRequestsArray={outputRequestsArray}
             outReqArrayHeaders={outReqArrayHeaders}
-            outRecActiveHeader={outRecActiveHeader}
         /></div>
     </div>
 }

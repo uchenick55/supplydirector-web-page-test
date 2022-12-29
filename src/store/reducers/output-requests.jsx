@@ -9,7 +9,6 @@ const initialState = {//инициализационный стейт
     outputRequestsArrayHeaders: { // массив заголовков запросов
         date: "Дата", name: "Название товара", qty: "Кол-во", cost: "Стоимость", answers: "Ответы"
     },
-    outRecActiveHeader: "date",// активный заголовок таблицы запросов - пока не используется
     outRecActiveFilterButton: "Все запросы", // активная кнопка фильтрации - пока не используется
     outputRequestsArray: [ // исходящие запросы по умолчанию
         {idRequest: 1, date: "27.06.2022", name: "Корпус из АБС пластика", qty: "1 000 шт.", cost: "10 000 ₽ - 220 000 ₽", answers: true, archived: false },
