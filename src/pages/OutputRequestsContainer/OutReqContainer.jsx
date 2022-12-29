@@ -2,11 +2,12 @@ import {connect} from "react-redux";
 import React from "react";
 import styles from "./OutReqContainer.module.scss";
 import OutputRequests from "./OutputRequsts/OutputRequests";
+import {removeOutReq} from "../../store/reducers/output-requests";
 
 class OutReqContainer extends React.Component {
     // здесь мы получаем данные через коннект из стора и передаем в дочерние компоненты
     removeOutputRequest = (idRequest) => { // функция удаления исходящего запроса
-        alert("Удаление исходящего запроса номер " + idRequest);
+        this.props.removeOutReq(idRequest)
     }
     markAsArchived = (idRequest) => { // отметить как запрос как архивный
         alert("Пометить исходящий запрос номер " + idRequest + " как архивный" );
@@ -44,4 +45,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, null)(OutReqContainer)
+export default connect(mapStateToProps, {removeOutReq})(OutReqContainer)

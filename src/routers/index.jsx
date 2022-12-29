@@ -7,8 +7,13 @@ import styles from "./routers.module.css";
 
 const MainRouter = () => {
     return <div className={styles.app_wrapper}>
-        <div className={styles.app_wrapper_menu_left}>Часть меню</div>
-        <div className={styles.app_wrapper_header}>Часть header</div>
+        <div className={styles.app_wrapper_menu_left}>
+            <h2>Левое меню</h2>
+            <p>Запросы можно удалять через всплывающее меню (восстановление после F5)</p>
+            <p>На остальных элементах просто алерты вместо действий</p>
+
+        </div>
+        <div className={styles.app_wrapper_header}><h2>Header</h2></div>
         <div className={styles.app_wrapper_content}>
             <Switch>
                 <Route path={MAIN_URL.PROFILE} component={ProfileRouter}/>

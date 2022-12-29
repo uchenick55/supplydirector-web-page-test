@@ -21,4 +21,3 @@ const store = createStore(rootReducer, composeEnhancers(  // задание вс
 window.store = store; // возможность смотреть стор через консоль
 
 export default store
-
