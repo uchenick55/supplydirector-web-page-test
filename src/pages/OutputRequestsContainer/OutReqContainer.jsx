@@ -3,8 +3,19 @@ import React from "react";
 import styles from "./OutReqContainer.module.scss";
 import OutputRequests from "./OutputRequsts/OutputRequests";
 import {removeOutReq} from "../../store/reducers/output-requests";
+import preloader from "../../assets/media/icons/Spin-1s-64px.svg"
 
 class OutReqContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            initialisedApp: false, // имитация инициализации приложения
+        };
+    }
+    componentDidMount() {
+
+    }
+
     // здесь мы получаем данные через коннект из стора и передаем в дочерние компоненты
     removeOutputRequest = (idRequest) => { // функция удаления исходящего запроса
         this.props.removeOutReq(idRequest)
@@ -22,6 +33,11 @@ class OutReqContainer extends React.Component {
 
     }
     render() {
+        if (!this.state.initialisedApp) { // если приложение еще не инициализировано
+            setTimeout(()=>{this.setState({initialisedApp: true})}, 2000)
+            return <img className={styles.preloader} src={preloader} alt="Подождите"/> // показать статус загрузки
+        }
+
         return <div className={styles.container}>
             <OutputRequests
                 removeOutputRequest={this.removeOutputRequest}
