@@ -1,5 +1,5 @@
 import React from "react";
-import OutReqSearchField from "./ChildComponents/OutReqSearchField";
+import OutReqSearchField from "./ChildComponents/OutReqSearchField/OutReqSearchField";
 import OutReqFilterButtons from "./ChildComponents/OutReqFilterButtons/OutReqFilterButtons";
 import RenderAllOutReq from "./ChildComponents/RenderAllOutReq";
 import styles from "../OutReqContainer.module.scss"

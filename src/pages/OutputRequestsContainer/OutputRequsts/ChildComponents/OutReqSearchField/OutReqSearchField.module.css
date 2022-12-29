@@ -1,0 +1,17 @@
+.loginCommon {
+    padding: 10px;
+}
+
+.loginForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.legendStyle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fieldSetStyle {
+    padding: 10px;
+}
