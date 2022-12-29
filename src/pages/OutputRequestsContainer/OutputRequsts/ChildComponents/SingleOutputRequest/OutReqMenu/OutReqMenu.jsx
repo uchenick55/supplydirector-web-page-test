@@ -11,8 +11,8 @@ import styles from "./OutReqMenu.module.css"
 import {Redirect} from 'react-router-dom';
 
 const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idRequest, name}) => {
-    let detailedRequest = () => {
-        alert("переход на страницу Подробнее из локальной функции ")
+    let detailedRequest = (idRequest) => {
+        alert("переход из локальной функции на страницу Подробнее запроса " + idRequest)
         return <Redirect to="/somewhere/else"/>
         // перенаправление на другую страницу (работал с Navlink вместо Redirect - другая версия react-router-dom),
     }

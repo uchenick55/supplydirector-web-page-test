@@ -22,6 +22,7 @@ class OutReqContainer extends React.Component {
                 markAsArchived={this.markAsArchived}
                 repeatRequest={this.repeatRequest}
                 outputRequestsArray={this.props.outputRequestsArray}
+                outReqArrayHeaders={this.props.outReqArrayHeaders}
             />
         </div>
     }
@@ -30,6 +31,7 @@ class OutReqContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         outputRequestsArray: state.outputRequests.outputRequestsArray,
+        outReqArrayHeaders: state.outputRequests.outputRequestsArrayHeaders,
     }
 }
 
