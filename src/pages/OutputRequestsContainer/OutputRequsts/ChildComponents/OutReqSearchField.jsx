@@ -1,8 +1,8 @@
 import React from "react";
 
-let OutputRequestsSearchField = () => {
+let OutReqSearchField = () => {
     // компонента поля поиска среди исходящих запросов - планирую на redux-form
-    return "OutputRequestsSearchField"
+    return "OutReqSearchField"
 }
 
-export default OutputRequestsSearchField
+export default OutReqSearchField

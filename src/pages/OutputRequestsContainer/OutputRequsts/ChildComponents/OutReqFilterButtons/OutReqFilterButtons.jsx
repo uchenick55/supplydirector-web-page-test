@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./OutputRequestsFilterButtons.module.css"
+import styles from "./OutReqFilterButtons.module.css"
 
-let OutputRequestsFilterButtons = () => {
+let OutReqFilterButtons = () => {
     //компонента кнопок фильтров по исходящим запросам
     return <div className={styles.outputRequestsFilterButtons}>
         <div className={styles.activeFilterButtons}>Все запросы</div>
@@ -13,4 +13,4 @@ let OutputRequestsFilterButtons = () => {
     </div>
 }
 
-export default OutputRequestsFilterButtons
+export default OutReqFilterButtons

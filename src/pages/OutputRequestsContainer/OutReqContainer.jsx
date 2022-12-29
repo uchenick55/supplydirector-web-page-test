@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
 import React from "react";
-import styles from "./OutputRequestsContainer.module.scss";
+import styles from "./OutReqContainer.module.scss";
 import OutputRequests from "./OutputRequsts/OutputRequests";
 
-class OutputRequestsContainer extends React.Component {
+class OutReqContainer extends React.Component {
     // здесь мы получаем данные через коннект из стора и передаем в дочерние компоненты
     removeOutputRequest = (idRequest) => { // функция удаления исходящего запроса
         alert("Удаление исходящего запроса номер " + idRequest);
@@ -17,7 +17,6 @@ class OutputRequestsContainer extends React.Component {
     }
     render() {
         return <div className={styles.container}>
-            "OutputRequestsContainer"
             <OutputRequests
                 removeOutputRequest={this.removeOutputRequest}
                 markAsArchived={this.markAsArchived}
@@ -35,4 +34,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, null)(OutputRequestsContainer)
+export default connect(mapStateToProps, null)(OutReqContainer)

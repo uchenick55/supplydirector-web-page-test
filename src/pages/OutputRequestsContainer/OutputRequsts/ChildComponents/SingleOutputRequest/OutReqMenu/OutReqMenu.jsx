@@ -7,10 +7,10 @@ import remove from "../../../../../../assets/media/icons/dropdown-menu/remove.jp
 import archive from "../../../../../../assets/media/icons/dropdown-menu/archive.jpg"
 import repeat from "../../../../../../assets/media/icons/dropdown-menu/repeat.jpg"
 import detailed from "../../../../../../assets/media/icons/dropdown-menu/detailed.jpg"
-import styles from "./OutputRequestMenu.module.css"
+import styles from "./OutReqMenu.module.css"
 import {Redirect} from 'react-router-dom';
 
-const OutputRequestMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idRequest, name}) => {
+const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idRequest, name}) => {
     let detailedRequest = () => {
         alert("переход на страницу Подробнее из локальной функции ")
         return <Redirect to="/somewhere/else"/>
@@ -75,4 +75,4 @@ const OutputRequestMenu = ({removeOutputRequest, markAsArchived, repeatRequest, 
         </div>
     );
 };
-export default OutputRequestMenu;
+export default OutReqMenu;

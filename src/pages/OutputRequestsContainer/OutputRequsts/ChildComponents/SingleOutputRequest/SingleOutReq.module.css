@@ -1,0 +1,21 @@
+.singleOutputRequest {
+    display: grid;
+    grid-template-columns: 150px 430px 150px 260px 190px 80px;
+    grid-template-rows: 65px;
+    max-width: max-content;
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    padding: 20px;
+
+}
+.responcesImgStyle {
+    width: 140px;
+}
+
+.fontFormating {
+    font-size: 20px;
+    padding-top: 15px;
+    vertical-align: middle;
+    display:table-cell;
+}

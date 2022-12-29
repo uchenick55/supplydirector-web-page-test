@@ -1,6 +1,7 @@
 .outputRequestMenuItem {
     display: grid;
     grid-template-columns: 60px 100px;
+    cursor: pointer;
 
 }
 .textInMenu {

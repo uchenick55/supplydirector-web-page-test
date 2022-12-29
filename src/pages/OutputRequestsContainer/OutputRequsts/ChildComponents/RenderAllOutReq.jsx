@@ -1,11 +1,11 @@
 import React from "react";
-import SingleOutputRequest from "./SingleOutputRequest/SingleOutputRequest";
+import SingleOutReq from "./SingleOutputRequest/SingleOutReq";
 
-let RenderAllOutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray}) => {
+let RenderAllOutReq = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray}) => {
     // компонента заголовков таблицы исходящих запросов, возможно уберу как отдельную компонету
     let outputRequestsElements = outputRequestsArray.map((d) => // подкомпонента отрисовки всех диалогов через map
         {
-            return <SingleOutputRequest
+            return <SingleOutReq
                 key={d.idRequest} idRequest={d.idRequest} date={d.date} name={d.name}
                 qty={d.qty} cost={d.cost}  answers={d.answers}  archived={d.archived}
                 removeOutputRequest={removeOutputRequest}
@@ -22,4 +22,4 @@ let RenderAllOutputRequests = ({removeOutputRequest, markAsArchived, repeatReque
     </div>)
 }
 
-export default RenderAllOutputRequests
+export default RenderAllOutReq
