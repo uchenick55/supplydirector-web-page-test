@@ -1,5 +1,5 @@
 import React from "react";
-import OutReqMenu from "./OutReqMenu/OutReqMenu";
+import OutReqMenu from "./OutReqMenu/OutReqMenu2";
 import styles from "./SingleOutReq.module.css"
 import responces from "./../../../../../assets/media/images/responces.jpg"
 
