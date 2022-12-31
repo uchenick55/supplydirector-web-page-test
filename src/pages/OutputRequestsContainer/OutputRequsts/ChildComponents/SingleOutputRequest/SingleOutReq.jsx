@@ -4,18 +4,22 @@ import styles from "./SingleOutReq.module.css"
 import responces from "./../../../../../assets/media/images/responces.jpg"
 
 let SingleOutReq = ({
-                               idRequest, date, name, qty, cost, answers, archived,
-                               removeOutputRequest, markAsArchived, repeatRequest,
+                               idRequest, answers,
+                               removeOutputRequest, markAsArchived, repeatRequest, dataList
                            }) => {
     let goToResponces = () => {
          alert("редирект на ответы ID " + idRequest ) // имитация перехода на ответы по запросу
     }
 
+
+    let RenderDataList = ({value}) => {
+        return  <div className={styles.fontFormating}>{value}</div>;  {/*вывод однотипных запросов*/}
+    }
+
     return <div className={styles.singleOutputRequest}>
-        <div className={styles.fontFormating}>{date}</div>  {/*Дата запроса*/}
-        <div className={styles.fontFormating}>{name}</div>{/*Имя запроса*/}
-        <div className={styles.fontFormating}>{qty}</div>{/*Кол-во в запросе*/}
-        <div className={styles.fontFormating}>{cost}</div> {/*Стоимость в запросе*/}
+        {Object.values(dataList).map(value => {
+            return <RenderDataList value={value}/>
+        })}
         <div>{answers? <div> <img className={styles.responcesImgStyle} src={responces} onClick={goToResponces} alt=""/></div>: <div className={styles.fontFormating}>Нет ответов</div> }</div>
         <div className={styles.outReqMenu}><OutReqMenu
             removeOutputRequest={removeOutputRequest} // колбек удаления outputRequest из стейта

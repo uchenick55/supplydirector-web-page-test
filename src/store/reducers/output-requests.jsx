@@ -1,4 +1,3 @@
-
 const REMOVE_OUT_REQ = "myApp/output-requests/REMOVE_OUT_REQ"; // константа для удаления outputRequest
 
 export let removeOutReq = (idRequest) => { // экшн креатор для удаления outputRequest
@@ -11,9 +10,39 @@ const initialState = {//инициализационный стейт
     },
     outRecActiveFilterButton: "Все запросы", // активная кнопка фильтрации - пока не используется
     outputRequestsArray: [ // исходящие запросы по умолчанию
-        {idRequest: 1, date: "27.06.2022", name: "Корпус из АБС пластика", qty: "1 000 шт.", cost: "10 000 ₽ - 220 000 ₽", answers: true, archived: false },
-        {idRequest: 2, date: "27.06.2022", name: "Гайка оцинкованная М16", qty: "10 000 шт.", cost: "10 000 ₽ - 220 000 ₽", answers: false, archived: false },
-        {idRequest: 3, date: "27.06.2022", name: "Пульсоксиметр Contec CMS 50D2", qty: "10 шт.", cost: "10 000 ₽ - 220 000 ₽", answers: false, archived: false },
+        {
+            idRequest: 1,
+            dataList: {
+                date: "27.06.2022",
+                name: "Корпус из АБС пластика",
+                qty: "1 000 шт.",
+                cost: "10 000 ₽ - 220 000 ₽"
+            },
+            answers: true,
+            archived: false
+        },
+        {
+            idRequest: 2,
+            dataList: {
+                date: "27.06.2022",
+                name: "Гайка оцинкованная М16",
+                qty: "10 000 шт.",
+                cost: "10 000 ₽ - 220 000 ₽",
+            },
+            answers: false,
+            archived: false
+        },
+        {
+            idRequest: 3,
+            dataList: {
+                date: "27.06.2022",
+                name: "Пульсоксиметр Contec CMS 50D2",
+                qty: "10 шт.",
+                cost: "10 000 ₽ - 220 000 ₽",
+            },
+            answers: false,
+            archived: false
+        },
     ]
 };
 
@@ -23,7 +52,7 @@ let outputRequestsReducer = (state = initialState, action) => { // редьюс�
         case REMOVE_OUT_REQ: // экшн для удаления outputRequest
             stateCopy = {
                 ...state, // копия всего стейта
-                outputRequestsArray: [...state.outputRequestsArray.filter(f=>f.idRequest!==action.idRequest)], // удалить исходящий запрос из стейта
+                outputRequestsArray: [...state.outputRequestsArray.filter(f => f.idRequest !== action.idRequest)], // удалить исходящий запрос из стейта
             }
             return stateCopy;
         default:
