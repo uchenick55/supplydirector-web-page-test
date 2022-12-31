@@ -1,6 +1,6 @@
 import Dropdown from "rc-dropdown"; // импорт выпадающего меню
 import "rc-dropdown/assets/index.css"; // импорт стилей, возможно удалю
-import React from "react";
+import React, {useState} from "react";
 import dots from "../../../../../../assets/media/icons/dropdown-menu/dots.jpg"
 import remove from "../../../../../../assets/media/icons/dropdown-menu/remove.jpg"
 import archive from "../../../../../../assets/media/icons/dropdown-menu/archive.jpg"
@@ -24,14 +24,21 @@ const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idReque
         {idMenu: 4, action: detailedRequest, text: "Подробнее", picSrc: detailed},
     ]
 
-    let SingleMenuItem = ({action, text, picSrc}) => {
+    let SingleMenuItem = ({action, text, picSrc, idMenu}) => {
+        const [hoverMenuItem, sethoverMenuItem] = useState(null)
         return <div>
             <div
-                className={styles.outputRequestMenuItem}
+                className={hoverMenuItem?styles.outputRequestActiveMenuItem:styles.outputRequestMenuItem}
                 onClick={() => {// по клику
                     action(idRequest); // вызов функции обработчика из контейнерной компоненты
                 }}
-            >
+                onMouseOver={() => {
+                    sethoverMenuItem(idMenu) // при наведении мышкой задать как id активного пункта меню
+                }}
+                onMouseLeave={() => {
+                    sethoverMenuItem(null) // при убирании мылки мышкой обнулить id активной вкладки
+                }}
+             >
                 <div className={styles.iconMenu}><img src={picSrc} alt=""/></div>
                 <div className={styles.textInMenu}>{text}</div>
             </div>
@@ -44,7 +51,7 @@ const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idReque
                 {
                     return <SingleMenuItem // отрисовка отдельного пункта меню с пропсами
                         key={d.idMenu} action={d.action}
-                        text={d.text} picSrc={d.picSrc}
+                        text={d.text} picSrc={d.picSrc} idMenu={d.idMenu}
                     />
                 }
             )}
