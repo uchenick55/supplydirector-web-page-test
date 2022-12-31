@@ -20,6 +20,8 @@ form {
     border-radius: 8px;
     background-color: #FFFFFF;
     padding: 0px;
+    border:1px solid #cfd3da;
+
 }
 
 .imgSearch {

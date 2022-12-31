@@ -37,11 +37,15 @@
 .outRecActiveHeader {
     color: #6266eb;
     display: grid;
-    grid-template-columns: 30px 50px;
+    grid-template-columns: 25px 50px;
     margin-left: inherit;
     cursor: pointer;
 }
 
 .outRecInActiveHeader {
     color: #6266eb
+}
+
+.sortImgStyle {
+    width: 20px;
 }

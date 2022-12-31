@@ -26,7 +26,7 @@ let RenderAllOutReq = ({removeOutputRequest, markAsArchived, repeatRequest,
                 onClick={()=>{alert("сортировка по Дате")}}
             >
                 {outReqArrayHeaders.date} {/*заголовок Дата*/}
-                <img src={sort} alt="sort by Name"/> {/*картинка сортировки*/}
+                <img className={styles.sortImgStyle} src={sort} alt="sort by Name"/> {/*картинка сортировки*/}
             </div>
             <div>{outReqArrayHeaders.name}</div> {/*заголовок имя*/}
             <div>{outReqArrayHeaders.qty}</div> {/*заголовок кол-во*/}

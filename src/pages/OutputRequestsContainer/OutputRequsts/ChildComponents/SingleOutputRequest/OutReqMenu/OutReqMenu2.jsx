@@ -8,9 +8,6 @@ import repeat from "../../../../../../assets/media/icons/dropdown-menu/repeat.jp
 import detailed from "../../../../../../assets/media/icons/dropdown-menu/detailed.jpg"
 import styles from "./OutReqMenu.module.css"
 import {Redirect} from "react-router-dom";
-import SingleOutReq from "../SingleOutReq";
-import responces from "../../../../../../assets/media/images/responces.jpg";
-import {Item as MenuItem} from "rc-menu/es";
 
 const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idRequest, name}) => {
 
