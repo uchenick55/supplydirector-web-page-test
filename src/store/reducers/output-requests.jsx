@@ -1,11 +1,15 @@
 const REMOVE_OUT_REQ = "myApp/output-requests/REMOVE_OUT_REQ"; // константа для удаления outputRequest
 const SET_ACTIVE_HEADER = "myApp/output-requests/SET_ACTIVE_HEADER"; // константа для удаления outputRequest
+const SET_ACTIVE_FILTER_BUTTON = "myApp/output-requests/SET_ACTIVE_FILTER_BUTTON"; // константа для задания активной кнопки фильтрации
 
 export let removeOutReq = (idRequest) => { // экшн креатор для удаления outputRequest
     return {type: REMOVE_OUT_REQ, idRequest}
 };
 export let setActiveHeaderAC = (activeOutReqHeader) => { // экшн креатор для задания активного заголовка запросов
     return {type: SET_ACTIVE_HEADER, activeOutReqHeader}
+};
+export let setActiveFiltBtnAC = (outReqActiveFiltBtn) => { // экшн креатор для задания активной кнопки фильтрации
+    return {type: SET_ACTIVE_FILTER_BUTTON, outReqActiveFiltBtn}
 };
 
 const initialState = {//инициализационный стейт
@@ -63,10 +67,16 @@ let outputRequestsReducer = (state = initialState, action) => { // редьюс�
                 outputRequestsArray: [...state.outputRequestsArray.filter(f => f.idRequest !== action.idRequest)], // удалить исходящий запрос из стейта
             }
             return stateCopy;
-        case SET_ACTIVE_HEADER: // экшн для узадания активного заголовка запросов
+        case SET_ACTIVE_HEADER: // экшн для задания активного заголовка запросов
             stateCopy = {
                 ...state, // копия всего стейта
                 activeOutReqHeader: action.activeOutReqHeader, // задать активный заголовок запросов
+            }
+            return stateCopy;
+        case SET_ACTIVE_FILTER_BUTTON: // экшн для задания активной кнопки фильтрации
+            stateCopy = {
+                ...state, // копия всего стейта
+                outReqActiveFiltBtn: action.outReqActiveFiltBtn, // задать активную кнопку фильтрации
             }
             return stateCopy;
         default:

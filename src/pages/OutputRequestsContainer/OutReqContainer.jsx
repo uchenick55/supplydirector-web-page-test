@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import React from "react";
 import styles from "./OutReqContainer.module.scss";
 import OutputRequests from "./OutputRequsts/OutputRequests";
-import {removeOutReq, setActiveHeaderAC} from "../../store/reducers/output-requests";
+import {removeOutReq, setActiveFiltBtnAC, setActiveHeaderAC} from "../../store/reducers/output-requests";
 import preloader from "../../assets/media/icons/Spin-1s-64px.svg"
 
 class OutReqContainer extends React.Component {
@@ -29,16 +29,16 @@ class OutReqContainer extends React.Component {
             console.log(outReqSearchFieldData);
         }
     }
-    setActiveHeadarer = (value) => {
+    setActiveHeadarer = (value) => { // установить активный заголовок
         if (value) {
             this.props.setActiveHeaderAC(value)
         }
-
-        /*
-                console.alert("мы дошли до container и сетаем " + value)
-        */
     }
-
+    setActiveFiltBtn = (value) => { // установить активную кнопку фильтрации
+        if (value) {
+            this.props.setActiveFiltBtnAC(value)
+        }
+    }
 
     render() {
         if (!this.state.initialisedApp) { // если приложение еще не инициализировано
@@ -60,6 +60,7 @@ class OutReqContainer extends React.Component {
                 setActiveHeadarer={this.setActiveHeadarer} // установить активный заголовок запросов для фильтрации
                 outReqArrayFiltBtn={this.props.outReqArrayFiltBtn}// массив кнопок фильтрации исходящих запросов
                 outReqActiveFiltBtn={this.props.outReqActiveFiltBtn}// активная кнопка фильтрации исходящих запросов
+                setActiveFiltBtn={this.setActiveFiltBtn} // задание активной кнопки фильтрации
             />
         </div>
     }
@@ -76,4 +77,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {removeOutReq, setActiveHeaderAC})(OutReqContainer)
+export default connect(mapStateToProps, {removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC})(OutReqContainer)

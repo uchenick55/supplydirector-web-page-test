@@ -7,7 +7,7 @@ import styles from "./OutReq.module.css"
 
 let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray,
                           outReqArrayHeaders, setOutReqFormData, activeOutReqHeader, setActiveHeadarer,
-                          outReqArrayFiltBtn, outReqActiveFiltBtn
+                          outReqArrayFiltBtn, outReqActiveFiltBtn, setActiveFiltBtn
 }) => {
     // список всех подкомпонент для исходящих запросов
     return <div className={styles.outputRequestsGrid}>
@@ -16,6 +16,7 @@ let OutputRequests = ({removeOutputRequest, markAsArchived, repeatRequest, outpu
         <div><OutReqFilterButtons
             outReqArrayFiltBtn={outReqArrayFiltBtn}// массив кнопок фильтрации исходящих запросов
             outReqActiveFiltBtn={outReqActiveFiltBtn}// активная кнопка фильтрации исходящих запросов
+            setActiveFiltBtn={setActiveFiltBtn}// задание активной кнопки фильтрации
         /></div>{/*отрисовка кнопок фильтрации*/}
         <div>{/*отрисовка исходящих запросов с заголовками*/}
             <RenderAllOutReq
