@@ -1,7 +1,11 @@
 const REMOVE_OUT_REQ = "myApp/output-requests/REMOVE_OUT_REQ"; // константа для удаления outputRequest
+const SET_ACTIVE_HEADER = "myApp/output-requests/SET_ACTIVE_HEADER"; // константа для удаления outputRequest
 
 export let removeOutReq = (idRequest) => { // экшн креатор для удаления outputRequest
     return {type: REMOVE_OUT_REQ, idRequest}
+};
+export let setActiveHeaderAC = (activeOutReqHeader) => { // экшн креатор для задания активного заголовка запросов
+    return {type: SET_ACTIVE_HEADER, activeOutReqHeader}
 };
 
 const initialState = {//инициализационный стейт
@@ -54,6 +58,12 @@ let outputRequestsReducer = (state = initialState, action) => { // редьюс�
             stateCopy = {
                 ...state, // копия всего стейта
                 outputRequestsArray: [...state.outputRequestsArray.filter(f => f.idRequest !== action.idRequest)], // удалить исходящий запрос из стейта
+            }
+            return stateCopy;
+        case SET_ACTIVE_HEADER: // экшн для узадания активного заголовка запросов
+            stateCopy = {
+                ...state, // копия всего стейта
+                activeOutReqHeader: action.activeOutReqHeader, // задать активный заголовок запросов
             }
             return stateCopy;
         default:

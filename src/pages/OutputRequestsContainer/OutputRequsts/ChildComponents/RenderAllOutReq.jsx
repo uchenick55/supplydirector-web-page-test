@@ -6,7 +6,7 @@ import sort from "../../../../assets/media/icons/sort1.jpg"
 
 let RenderAllOutReq = ({
                            removeOutputRequest, markAsArchived, repeatRequest,
-                           outputRequestsArray, outReqArrayHeaders, activeOutReqHeader
+                           outputRequestsArray, outReqArrayHeaders, activeOutReqHeader, setActiveHeadarer
                        }) => {
     // компонента заголовков таблицы исходящих запросов, возможно уберу как отдельную компонету
     let outputRequestsElements = outputRequestsArray.map((d) => // подкомпонента отрисовки всех диалогов через map
@@ -23,10 +23,15 @@ let RenderAllOutReq = ({
 
         let RenderOutReqArrayHeaders = ({value}) => {
             return <span onClick={() => {
-                alert("сортировка по " + value)
+                setActiveHeadarer(value)
             }}>
-                <span className={activeOutReqHeader === value?styles.outRecActiveHeader:styles.outRecInactiveHeader}>{value}</span>
-                <span>{activeOutReqHeader === value ? <img className={styles.sortImgStyle} src={sort} alt=""/> : null}</span>
+                <span className={activeOutReqHeader === value // если итерационный заголовок равен активному из BLL
+                    ?styles.outRecActiveHeader // стилизация активного заголовка
+                    :styles.outRecInactiveHeader} // стилизация остальных заголовков
+                >{value}</span>
+                <span>{activeOutReqHeader === value // если итерационный заголовок равен активному из BLL
+                    ? <img className={styles.sortImgStyle} src={sort} alt=""/> // отобразить картинку сортировки
+                    : null}</span> {/*иначе ничего не добавлять*/}
             </span>
         }
 

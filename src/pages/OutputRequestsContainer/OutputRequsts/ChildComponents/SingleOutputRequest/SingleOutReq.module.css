@@ -1,6 +1,6 @@
 .singleOutputRequest {
     display: grid;
-    grid-template-columns: 1.5fr 3.5fr 1.3fr 2.3fr 1.8fr 0.7fr;
+    grid-template-columns: 1.5fr 3.5fr 1.6fr 2.3fr 1.8fr 0.7fr;
 
     grid-template-rows: 65px;
     background-color: white;
@@ -13,7 +13,7 @@
 
 .outputRequestsHeadersCommon {
     display: grid;
-    grid-template-columns: 1.5fr 3.5fr 1.3fr 2.3fr 1.8fr 0.7fr;
+    grid-template-columns: 1.5fr 3.5fr 1.6fr 2.3fr 1.8fr 0.7fr;
 
     grid-template-rows: 40px;
     padding-top: 20px;
@@ -52,7 +52,6 @@
 .outRecActiveHeader {
     color: #6266eb;
     cursor: pointer;
-
 }
 
 .outRecInactiveHeader {
