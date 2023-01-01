@@ -49,11 +49,6 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
 article > * + * {
   margin-top: 1em;
 }
@@ -169,6 +164,12 @@ input[type="file"] + label {
 textarea {
   min-height: 150px;
 }
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
 
 img {
   display: block;

@@ -43,6 +43,7 @@ class OutReqContainer extends React.Component {
                 outputRequestsArray={this.props.outputRequestsArray} // весь массив исходящих запросов
                 outReqArrayHeaders={this.props.outReqArrayHeaders} // массив заголовков из стейта
                 setOutReqFormData={this.setOutReqFormData}// ввод в поисковой строке, пока поднял в контейнерную компоненту и вывел в консоль
+                activeOutReqHeader={this.props.activeOutReqHeader} // активный заголовок фильтрации исходящих запросов
             />
         </div>
     }
@@ -52,6 +53,7 @@ let mapStateToProps = (state) => {
     return {
         outputRequestsArray: state.outputRequests.outputRequestsArray, // массив исходящих запросов
         outReqArrayHeaders: state.outputRequests.outputRequestsArrayHeaders, // массив заголовков
+        activeOutReqHeader: state.outputRequests.activeOutReqHeader,// активный заголовок фильтрации исходящих запросов
     }
 }
 
