@@ -58,6 +58,8 @@ class OutReqContainer extends React.Component {
                 setOutReqFormData={this.setOutReqFormData}// ввод в поисковой строке, пока поднял в контейнерную компоненту и вывел в консоль
                 activeOutReqHeader={this.props.activeOutReqHeader} // активный заголовок фильтрации исходящих запросов
                 setActiveHeadarer={this.setActiveHeadarer} // установить активный заголовок запросов для фильтрации
+                outReqArrayFiltBtn={this.props.outReqArrayFiltBtn}// массив кнопок фильтрации исходящих запросов
+                outReqActiveFiltBtn={this.props.outReqActiveFiltBtn}// активная кнопка фильтрации исходящих запросов
             />
         </div>
     }
@@ -68,6 +70,8 @@ let mapStateToProps = (state) => {
         outputRequestsArray: state.outputRequests.outputRequestsArray, // массив исходящих запросов
         outReqArrayHeaders: state.outputRequests.outputRequestsArrayHeaders, // массив заголовков
         activeOutReqHeader: state.outputRequests.activeOutReqHeader,// активный заголовок фильтрации исходящих запросов
+        outReqArrayFiltBtn: state.outputRequests.outReqArrayFiltBtn, // массив кнопок фильтрации исходящих запросов
+        outReqActiveFiltBtn: state.outputRequests.outReqActiveFiltBtn, // активная кнопка фильтрации исходящих запросов
     }
 }
 

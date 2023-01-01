@@ -38,7 +38,7 @@ let RenderAllOutReq = ({
         return <div
             className={styles.outputRequestsHeadersCommon}
         >
-            {outReqArrayHeaders.map((value, index) => { // вывод заголовков исходящих запросов
+            {outReqArrayHeaders.map((value) => { // вывод заголовков исходящих запросов
                 return <MapOutReqArrayHeaders key={value.toString()} value={value}/>
             })}
         </div>
