@@ -21,7 +21,7 @@ let RenderAllOutReq = ({
     );
     let RenderOutReqArrayHeaders = () => { // отрисовка заголовков списка исходящих запросов
 
-        let RenderOutReqArrayHeaders = ({value}) => {
+        let MapOutReqArrayHeaders = ({value}) => {
             return <span onClick={() => {
                 setActiveHeadarer(value)
             }}>
@@ -38,8 +38,8 @@ let RenderAllOutReq = ({
         return <div
             className={styles.outputRequestsHeadersCommon}
         >
-            {Object.values(outReqArrayHeaders).map((value, index) => { // вывод заголовков исходящих запросов
-                return <RenderOutReqArrayHeaders key={value.toString()} value={value}/>
+            {outReqArrayHeaders.map((value, index) => { // вывод заголовков исходящих запросов
+                return <MapOutReqArrayHeaders key={value.toString()} value={value}/>
             })}
         </div>
     }
