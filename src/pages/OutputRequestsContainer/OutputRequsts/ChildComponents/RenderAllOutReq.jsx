@@ -6,7 +6,7 @@ import sort from "../../../../assets/media/icons/sort1.jpg"
 
 let RenderAllOutReq = ({
                            removeOutputRequest, markAsArchived, repeatRequest,
-                           outputRequestsArray, outReqArrayHeaders, activeOutReqHeader, setActiveHeadarer
+                           outputRequestsArray, outReqArrayHeaders, activeOutReqHeader, setActiveHeadarer, outReqActiveFiltBtn
                        }) => {
     // компонента заголовков таблицы исходящих запросов, возможно уберу как отдельную компонету
     let outputRequestsElements = outputRequestsArray.map((d) => // подкомпонента отрисовки всех диалогов через map
@@ -14,8 +14,9 @@ let RenderAllOutReq = ({
             return <SingleOutReq // отрисовка отдельного исходящего запроса с пропсами
                 key={d.idRequest} idRequest={d.idRequest} dataList={d.dataList} answers={d.answers} archived={d.archived}
                 removeOutputRequest={removeOutputRequest}
-                markAsArchived={markAsArchived}
-                repeatRequest={repeatRequest}
+                markAsArchived={markAsArchived} // маркировакть как архивный исходящий запрос
+                repeatRequest={repeatRequest} // повторить запрос
+
             />
         }
     );
@@ -46,10 +47,11 @@ let RenderAllOutReq = ({
 
 
     return (<div>
-        <div><RenderOutReqArrayHeaders/></div>
-        {/*отрисовка заголовков*/}
+        <div><RenderOutReqArrayHeaders/></div>{/*отрисовка заголовков*/}
+        <div></div>{/*Фильтрация исходящих запросов outputRequestsArray*/}
+        <div></div> {/*Сортировка исходящих запросов outputRequestsArray*/}
         <div>
-            {outputRequestsElements} {/* Отрисовка исходящих запросов*/}
+            {outputRequestsElements} {/* Отрисовка исходящих запросов outputRequestsArray */}
         </div>
     </div>)
 }

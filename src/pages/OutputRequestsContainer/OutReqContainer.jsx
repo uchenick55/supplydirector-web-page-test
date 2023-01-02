@@ -4,6 +4,11 @@ import styles from "./OutReqContainer.module.scss";
 import OutputRequests from "./OutputRequsts/OutputRequests";
 import {removeOutReq, setActiveFiltBtnAC, setActiveHeaderAC} from "../../store/reducers/output-requests";
 import preloader from "../../assets/media/icons/Spin-1s-64px.svg"
+import {
+    getActiveOutReqHeader, getOutReqActiveFiltBtn,
+    getOutputRequestsArray, getOutReqArrayFiltBtn,
+    getOutReqArrayHeaders
+} from "../../store/selectors/output-requests-selector";
 
 class OutReqContainer extends React.Component {
     constructor(props) {
@@ -68,13 +73,12 @@ class OutReqContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        outputRequestsArray: state.outputRequests.outputRequestsArray, // массив исходящих запросов
-        outReqArrayHeaders: state.outputRequests.outputRequestsArrayHeaders, // массив заголовков
-        activeOutReqHeader: state.outputRequests.activeOutReqHeader,// активный заголовок фильтрации исходящих запросов
-        outReqArrayFiltBtn: state.outputRequests.outReqArrayFiltBtn, // массив кнопок фильтрации исходящих запросов
-        outReqActiveFiltBtn: state.outputRequests.outReqActiveFiltBtn, // активная кнопка фильтрации исходящих запросов
+        outputRequestsArray: getOutputRequestsArray(state), // массив исходящих запросов
+        outReqArrayHeaders: getOutReqArrayHeaders(state), // массив заголовков
+        activeOutReqHeader: getActiveOutReqHeader(state), // активный заголовок фильтрации исходящих запросов
+        outReqArrayFiltBtn: getOutReqArrayFiltBtn(state), // массив кнопок фильтрации исходящих запросов
+        outReqActiveFiltBtn: getOutReqActiveFiltBtn(state), // активная кнопка фильтрации исходящих запросов
     }
 }
-
 
 export default connect(mapStateToProps, {removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC})(OutReqContainer)
