@@ -2,9 +2,18 @@ import {connect} from "react-redux";
 import React from "react";
 import styles from "./OutReqContainer.module.scss";
 import OutputRequests from "./OutputRequsts/OutputRequests";
-import {removeOutReq, setActiveFiltBtnAC, setActiveHeaderAC} from "../../store/reducers/output-requests";
+import {
+    removeOutReq,
+    setActiveFiltBtnAC,
+    setActiveHeaderAC,
+    setOutReqSearchFieldDataAC
+} from "../../store/reducers/output-requests";
 import preloader from "../../assets/media/icons/Spin-1s-64px.svg"
-import {getArrayFilteredByBtns, outReqSelector} from "../../store/selectors/output-requests-selectors";
+import {
+    getArrayFilteredByBtns,
+    getArrayFilteredBySearchFieldAndButtons,
+    outReqSelector
+} from "../../store/selectors/output-requests-selectors";
 
 class OutReqContainer extends React.Component {
     constructor(props) {
@@ -26,9 +35,10 @@ class OutReqContainer extends React.Component {
 
     }
     setOutReqFormData = (outReqSearchFieldData) => { // ввод в поисковой строке отображается в консоли
-        if (outReqSearchFieldData) {
-            console.log(outReqSearchFieldData);
+        if (!outReqSearchFieldData) {
+            outReqSearchFieldData=""
         }
+        this.props.setOutReqSearchFieldDataAC(outReqSearchFieldData)
     }
     setActiveHeadarer = (value) => { // установить активный заголовок
         if (value) {
@@ -69,12 +79,15 @@ class OutReqContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        outputRequestsArray: getArrayFilteredByBtns(state), // массив исходящих запросов
+        outputRequestsArray: getArrayFilteredBySearchFieldAndButtons(state), // массив исходящих запросов
         outReqArrayHeaders: outReqSelector.getArrayHeaders(state), // массив заголовков
         activeOutReqHeader: outReqSelector.getActiveHeader(state), // активный заголовок фильтрации исходящих запросов
         outReqArrayFiltBtn: outReqSelector.getArrayFiltBtn(state), // массив кнопок фильтрации исходящих запросов
         outReqActiveFiltBtn: outReqSelector.getActiveFiltBtn(state), // активная кнопка фильтрации исходящих запросов
+        outReqSearchFieldData: outReqSelector.getOutReqSearchFieldData(state), // значение поля поиска по запросам
     }
 }
 
-export default connect(mapStateToProps, {removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC})(OutReqContainer)
+export default connect(mapStateToProps, {
+    removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC, setOutReqSearchFieldDataAC
+})(OutReqContainer)

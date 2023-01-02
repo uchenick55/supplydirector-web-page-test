@@ -1,7 +1,9 @@
 const REMOVE_OUT_REQ = "myApp/output-requests/REMOVE_OUT_REQ"; // константа для удаления outputRequest
 const SET_ACTIVE_HEADER = "myApp/output-requests/SET_ACTIVE_HEADER"; // константа для удаления outputRequest
 const SET_ACTIVE_FILTER_BUTTON = "myApp/output-requests/SET_ACTIVE_FILTER_BUTTON"; // константа для задания активной кнопки фильтрации
+const SET_OUT_REC_SEARCH_FIELD_DATA = "myApp/output-requests/OUT_REC_SEARCH_FIELD_DATA"; // константа для задания значения поисковой строки
 
+//outReqSearchFieldData
 export let removeOutReq = (idRequest) => { // экшн креатор для удаления outputRequest
     return {type: REMOVE_OUT_REQ, idRequest}
 };
@@ -10,6 +12,9 @@ export let setActiveHeaderAC = (activeOutReqHeader) => { // экшн креат�
 };
 export let setActiveFiltBtnAC = (outReqActiveFiltBtn) => { // экшн креатор для задания активной кнопки фильтрации
     return {type: SET_ACTIVE_FILTER_BUTTON, outReqActiveFiltBtn}
+};
+export let setOutReqSearchFieldDataAC = (outReqSearchFieldData) => { // экшн креатор для задания значения поисковой строки
+    return {type: SET_OUT_REC_SEARCH_FIELD_DATA, outReqSearchFieldData}
 };
 
 const initialState = {//инициализационный стейт
@@ -21,6 +26,7 @@ const initialState = {//инициализационный стейт
         "Все запросы", "Без ответов", "С ответами", "Старые", "Архив"
     ],
     outReqActiveFiltBtn: "Все запросы", // активная кнопка фильтрации - пока не используется
+    outReqSearchFieldData: "", // значение поисковой строки
     outputRequestsArray: [ // исходящие запросы по умолчанию
         {
             idRequest: 1,
@@ -55,7 +61,8 @@ const initialState = {//инициализационный стейт
             answers: false,
             archived: false
         },
-    ]
+    ],
+
 };
 
 let outputRequestsReducer = (state = initialState, action) => { // редьюсер исходящих запросов
@@ -79,9 +86,16 @@ let outputRequestsReducer = (state = initialState, action) => { // редьюс�
                 outReqActiveFiltBtn: action.outReqActiveFiltBtn, // задать активную кнопку фильтрации
             }
             return stateCopy;
+        case SET_OUT_REC_SEARCH_FIELD_DATA: // экшн для задания значения поисковой строки
+            stateCopy = {
+                ...state, // копия всего стейта
+                outReqSearchFieldData: action.outReqSearchFieldData, // задать активную кнопку фильтрации
+            }
+            return stateCopy;
         default:
             return state; // по умолчанию стейт возврашается неизмененным
     }
 }
 
 export default outputRequestsReducer;
+

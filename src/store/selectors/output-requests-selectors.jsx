@@ -16,7 +16,11 @@ export const outReqSelector = {
     },
     getActiveFiltBtn: (state) => {// активная кнопка фильтрации исходящих запросов
         return state.outputRequests.outReqActiveFiltBtn
-    }
+    },
+    getOutReqSearchFieldData: (state) => {// получение значения поиска по запросам
+        return state.outputRequests.outReqSearchFieldData
+    },
+
 }
 
 export let getArrayFilteredByBtns = createSelector(
@@ -50,5 +54,17 @@ export let getArrayFilteredByBtns = createSelector(
             default: // Все запросы
                 return outputRequestsArray; // по умолчанию стейт возврашается неизмененным
         }
+    })
+
+export let getArrayFilteredBySearchFieldAndButtons = createSelector(
+    [
+        getArrayFilteredByBtns, // массив после фильтрации по кнопкам
+        outReqSelector.getOutReqSearchFieldData, // значение поля поиска по запросам
+    ],
+    (outputRequestsArray, outReqSearchFieldData) => {
+        let outputRequestsArray2 = outputRequestsArray.filter((item) =>
+            item.dataList.name.toLowerCase().includes(outReqSearchFieldData.toLowerCase()))
+        // поиск по вхождению части слова в поле Название товара по запросам независомо от регистра
+        return outputRequestsArray2;
     })
 
