@@ -92,7 +92,7 @@ export let getArrFiltSearchBtnsSortHeader = createSelector( // сортиров�
                     }
                 );
                 return outputRequestsArray3;
-            case "Стоимость": // экшн сортировка по "Кол-во"
+            case "Стоимость": // экшн сортировка по "Стоимость"
                 outputRequestsArray3 = outputRequestsArray.
                 slice().sort(//сделать копию
                     (a, b) => {  // направление сортировки
@@ -100,6 +100,19 @@ export let getArrFiltSearchBtnsSortHeader = createSelector( // сортиров�
                         // parseInt - забрать только число //
                         // dataList.cost - текущий путь в массиве в стоимости
                         // .replace(/\s/g, "") - сжать пробелы
+                        return sortHeaderDirection
+                            ? commonPart1(b) - commonPart1(a) // прямая сортировка
+                            : commonPart1(a) - commonPart1(b) // обратная сортировка
+                    }
+                );
+                return outputRequestsArray3;
+            case "Название товара": // экшн сортировка по "Название товара"
+                outputRequestsArray3 = outputRequestsArray.
+                slice().sort(//сделать копию
+                    (a, b) => {  // направление сортировки
+                        let commonPart1 = (ab) => (ab.dataList.name) // вынес общую часть
+                        // parseInt - забрать только число //
+                        // dataList.name - текущий путь в массиве к имени
                         return sortHeaderDirection
                             ? commonPart1(b) - commonPart1(a) // прямая сортировка
                             : commonPart1(a) - commonPart1(b) // обратная сортировка

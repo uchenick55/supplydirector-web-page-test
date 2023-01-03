@@ -25,7 +25,7 @@ const initialState = {//инициализационный стейт
     outputRequestsArrayHeaders: [ // массив заголовков запросов
         "Дата", "Название товара", "Кол-во", "Стоимость", "Ответы", ""
     ],
-    activeOutReqHeader: "Название товара",
+    activeOutReqHeader: "Дата",
     sortHeaderDirection: true,
     outReqArrayFiltBtn: [ // массив кнопок фильтрации
         "Все запросы", "Без ответов", "С ответами", "Старые", "Архив"

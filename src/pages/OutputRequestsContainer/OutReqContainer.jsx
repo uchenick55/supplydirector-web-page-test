@@ -65,12 +65,13 @@ class OutReqContainer extends React.Component {
                 repeatRequest={this.repeatRequest} // повторить запрос - привел к контейнерному компонету
                 outputRequestsArray={this.props.outputRequestsArray} // весь массив исходящих запросов
                 outReqArrayHeaders={this.props.outReqArrayHeaders} // массив заголовков из стейта
-                setOutReqFormData={this.setOutReqFormData}// ввод в поисковой строке, пока поднял в контейнерную компоненту и вывел в консоль
+                setOutReqFormData={this.setOutReqFormData}// ввод в поисковой строке
                 activeOutReqHeader={this.props.activeOutReqHeader} // активный заголовок фильтрации исходящих запросов
                 setActiveHeadarer={this.setActiveHeadarer} // установить активный заголовок запросов для фильтрации
                 outReqArrayFiltBtn={this.props.outReqArrayFiltBtn}// массив кнопок фильтрации исходящих запросов
                 outReqActiveFiltBtn={this.props.outReqActiveFiltBtn}// активная кнопка фильтрации исходящих запросов
                 setActiveFiltBtn={this.setActiveFiltBtn} // задание активной кнопки фильтрации
+                sortHeaderDirection={this.props.sortHeaderDirection} // направление сортировки для картинки сортировки
             />
         </div>
     }

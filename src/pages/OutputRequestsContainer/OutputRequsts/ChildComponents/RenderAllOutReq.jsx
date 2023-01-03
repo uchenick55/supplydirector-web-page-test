@@ -1,12 +1,13 @@
 import React from "react";
 import SingleOutReq from "./SingleOutputRequest/SingleOutReq";
 import styles from "./../ChildComponents/SingleOutputRequest/SingleOutReq.module.css"
-import sort from "../../../../assets/media/icons/sort1.jpg"
+import sort1 from "../../../../assets/media/icons/sort1.jpg"
+import sort2 from "../../../../assets/media/icons/sort2.jpg"
 
 
 let RenderAllOutReq = ({
-                           removeOutputRequest, markAsArchived, repeatRequest,
-                           outputRequestsArray, outReqArrayHeaders, activeOutReqHeader, setActiveHeadarer, outReqActiveFiltBtn
+                           removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray,
+                           outReqArrayHeaders, activeOutReqHeader, setActiveHeadarer, sortHeaderDirection
                        }) => {
     // компонента заголовков таблицы исходящих запросов, возможно уберу как отдельную компонету
     let outputRequestsElements = outputRequestsArray.map((d) => // подкомпонента отрисовки всех диалогов через map
@@ -31,7 +32,7 @@ let RenderAllOutReq = ({
                     :styles.outRecInactiveHeader} // стилизация остальных заголовков
                 >{value}</span>
                 <span>{activeOutReqHeader === value // если итерационный заголовок равен активному из BLL
-                    ? <img className={styles.sortImgStyle} src={sort} alt=""/> // отобразить картинку сортировки
+                    ? <img className={styles.sortImgStyle} src={sortHeaderDirection?sort1:sort2} alt=""/> // отобразить картинку сортировки
                     : null}</span> {/*иначе ничего не добавлять*/}
             </span>
         }

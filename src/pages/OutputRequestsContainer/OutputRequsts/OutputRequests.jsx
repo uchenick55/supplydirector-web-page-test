@@ -7,7 +7,7 @@ import styles from "./OutReq.module.css"
 let OutputRequests = ({
                           removeOutputRequest, markAsArchived, repeatRequest, outputRequestsArray,
                           outReqArrayHeaders, setOutReqFormData, activeOutReqHeader, setActiveHeadarer,
-                          outReqArrayFiltBtn, outReqActiveFiltBtn, setActiveFiltBtn
+                          outReqArrayFiltBtn, outReqActiveFiltBtn, setActiveFiltBtn, sortHeaderDirection
                       }) => {
     // список всех подкомпонент для исходящих запросов
     return <div className={styles.outputRequestsGrid}>
@@ -31,6 +31,7 @@ let OutputRequests = ({
                 setActiveHeadarer={setActiveHeadarer}
                 activeOutReqHeader={activeOutReqHeader}
                 outReqActiveFiltBtn={outReqActiveFiltBtn}
+                sortHeaderDirection={sortHeaderDirection}
             /></div>
     </div>
 }
