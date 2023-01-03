@@ -3,13 +3,15 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import {MAIN_URL} from "../constants";
 import ProfileRouter from "./ProfileRouter";
 import styles from "./routers.module.css";
+import dots from "../assets/media/icons/dropdown-menu/dots.jpg"
 
 
 const MainRouter = () => {
     return <div className={styles.app_wrapper}>
         <div className={styles.app_wrapper_menu_left}>
             <h2>Левое меню</h2>
-            <p>Запросы можно удалять через всплывающее меню (восстановление после F5)</p>
+                <p>Запросы можно удалять через всплывающее меню (нажав справа от запроса <img src={dots} alt="" className={styles.dotsStyle}/> (восстановление после F5)</p>
+            <p>Поиск в запросах по полю "Название товара" независомо от регистра</p>
             <p>Работает фильтрация запросов по всем кнопкам под полем поиска</p>
             <p>Переключение заголовков сортировки над списком запросов</p>
             <p>На остальных элементах просто алерты вместо действий</p>

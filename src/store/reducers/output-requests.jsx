@@ -2,6 +2,7 @@ const REMOVE_OUT_REQ = "myApp/output-requests/REMOVE_OUT_REQ"; // констан
 const SET_ACTIVE_HEADER = "myApp/output-requests/SET_ACTIVE_HEADER"; // константа для удаления outputRequest
 const SET_ACTIVE_FILTER_BUTTON = "myApp/output-requests/SET_ACTIVE_FILTER_BUTTON"; // константа для задания активной кнопки фильтрации
 const SET_OUT_REC_SEARCH_FIELD_DATA = "myApp/output-requests/OUT_REC_SEARCH_FIELD_DATA"; // константа для задания значения поисковой строки
+const SET_SORT_HEADER_DIRECTION = "myApp/output-requests/SET_SORT_HEADER_DIRECTION"; // константа задания направления сортировки
 
 //outReqSearchFieldData
 export let removeOutReq = (idRequest) => { // экшн креатор для удаления outputRequest
@@ -16,12 +17,16 @@ export let setActiveFiltBtnAC = (outReqActiveFiltBtn) => { // экшн креа�
 export let setOutReqSearchFieldDataAC = (outReqSearchFieldData) => { // экшн креатор для задания значения поисковой строки
     return {type: SET_OUT_REC_SEARCH_FIELD_DATA, outReqSearchFieldData}
 };
+export let setSortHeaderDirectionAC = (sortHeaderDirection) => { // экшн креатор для задания направления сортировки
+    return {type: SET_SORT_HEADER_DIRECTION, sortHeaderDirection}
+};
 
 const initialState = {//инициализационный стейт
     outputRequestsArrayHeaders: [ // массив заголовков запросов
         "Дата", "Название товара", "Кол-во", "Стоимость", "Ответы", ""
     ],
-    activeOutReqHeader: "Дата",
+    activeOutReqHeader: "Название товара",
+    sortHeaderDirection: true,
     outReqArrayFiltBtn: [ // массив кнопок фильтрации
         "Все запросы", "Без ответов", "С ответами", "Старые", "Архив"
     ],
@@ -33,8 +38,8 @@ const initialState = {//инициализационный стейт
             dataList: {
                 date: "27.06.2022",
                 name: "Корпус из АБС пластика",
-                qty: "1 000 шт.",
-                cost: "10 000 ₽ - 220 000 ₽"
+                qty: "10 000 шт.",
+                cost: "15 000 ₽ - 220 000 ₽"
             },
             answers: true,
             archived: false
@@ -42,9 +47,9 @@ const initialState = {//инициализационный стейт
         {
             idRequest: 2,
             dataList: {
-                date: "27.06.2021",
+                date: "27.06.2020",
                 name: "Гайка оцинкованная М16",
-                qty: "10 000 шт.",
+                qty: "1 000 шт.",
                 cost: "10 000 ₽ - 220 000 ₽",
             },
             answers: false,
@@ -53,10 +58,21 @@ const initialState = {//инициализационный стейт
         {
             idRequest: 3,
             dataList: {
-                date: "27.06.2020",
+                date: "27.06.2021",
                 name: "Пульсоксиметр Contec CMS 50D2",
                 qty: "10 шт.",
-                cost: "10 000 ₽ - 220 000 ₽",
+                cost: "20 000 ₽ - 220 000 ₽",
+            },
+            answers: false,
+            archived: false
+        },
+        {
+            idRequest: 4,
+            dataList: {
+                date: "27.06.2019",
+                name: "Адронный коллайдер",
+                qty: "100 шт.",
+                cost: "5 000 ₽ - 220 000 ₽",
             },
             answers: false,
             archived: false
@@ -90,6 +106,12 @@ let outputRequestsReducer = (state = initialState, action) => { // редьюс�
             stateCopy = {
                 ...state, // копия всего стейта
                 outReqSearchFieldData: action.outReqSearchFieldData, // задать активную кнопку фильтрации
+            }
+            return stateCopy;
+        case SET_SORT_HEADER_DIRECTION: // экшн для задания направления сортировки
+            stateCopy = {
+                ...state, // копия всего стейта
+                sortHeaderDirection: action.sortHeaderDirection, // задать направление сортировки
             }
             return stateCopy;
         default:

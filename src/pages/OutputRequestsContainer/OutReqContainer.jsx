@@ -6,14 +6,10 @@ import {
     removeOutReq,
     setActiveFiltBtnAC,
     setActiveHeaderAC,
-    setOutReqSearchFieldDataAC
+    setOutReqSearchFieldDataAC, setSortHeaderDirectionAC
 } from "../../store/reducers/output-requests";
 import preloader from "../../assets/media/icons/Spin-1s-64px.svg"
-import {
-    getArrayFilteredByBtns,
-    getArrayFilteredBySearchFieldAndButtons,
-    outReqSelector
-} from "../../store/selectors/output-requests-selectors";
+import {getArrFiltSearchBtnsSortHeader, outReqSelector} from "../../store/selectors/output-requests-selectors";
 
 class OutReqContainer extends React.Component {
     constructor(props) {
@@ -36,14 +32,17 @@ class OutReqContainer extends React.Component {
     }
     setOutReqFormData = (outReqSearchFieldData) => { // ввод в поисковой строке отображается в консоли
         if (!outReqSearchFieldData) {
-            outReqSearchFieldData=""
+            outReqSearchFieldData = ""
         }
         this.props.setOutReqSearchFieldDataAC(outReqSearchFieldData)
     }
     setActiveHeadarer = (value) => { // установить активный заголовок
-        if (value) {
-            this.props.setActiveHeaderAC(value)
+        if (value===this.props.activeOutReqHeader) {
+            this.props.setSortHeaderDirectionAC(!this.props.sortHeaderDirection)
+            return
         }
+        this.props.setSortHeaderDirectionAC(true)
+        this.props.setActiveHeaderAC(value)
     }
     setActiveFiltBtn = (value) => { // установить активную кнопку фильтрации
         if (value) {
@@ -79,15 +78,17 @@ class OutReqContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        outputRequestsArray: getArrayFilteredBySearchFieldAndButtons(state), // массив исходящих запросов
+        outputRequestsArray: getArrFiltSearchBtnsSortHeader(state),
+        // массив исходящих запросов (после фильтрации по кнопкам, полю поиска и сортировки по заголовкам)
         outReqArrayHeaders: outReqSelector.getArrayHeaders(state), // массив заголовков
         activeOutReqHeader: outReqSelector.getActiveHeader(state), // активный заголовок фильтрации исходящих запросов
         outReqArrayFiltBtn: outReqSelector.getArrayFiltBtn(state), // массив кнопок фильтрации исходящих запросов
         outReqActiveFiltBtn: outReqSelector.getActiveFiltBtn(state), // активная кнопка фильтрации исходящих запросов
         outReqSearchFieldData: outReqSelector.getOutReqSearchFieldData(state), // значение поля поиска по запросам
+        sortHeaderDirection: outReqSelector.getSortHeaderDirection(state), // направление сортировки из стейта
     }
 }
 
 export default connect(mapStateToProps, {
-    removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC, setOutReqSearchFieldDataAC
+    removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC, setOutReqSearchFieldDataAC, setSortHeaderDirectionAC
 })(OutReqContainer)

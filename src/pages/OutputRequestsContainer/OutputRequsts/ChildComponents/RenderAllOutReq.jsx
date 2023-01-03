@@ -48,8 +48,6 @@ let RenderAllOutReq = ({
 
     return (<div>
         <div><RenderOutReqArrayHeaders/></div>{/*отрисовка заголовков*/}
-        <div></div>{/*Фильтрация исходящих запросов outputRequestsArray*/}
-        <div></div> {/*Сортировка исходящих запросов outputRequestsArray*/}
         <div>
             {outputRequestsElements} {/* Отрисовка исходящих запросов outputRequestsArray */}
         </div>

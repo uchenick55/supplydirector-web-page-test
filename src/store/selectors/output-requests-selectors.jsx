@@ -20,51 +20,108 @@ export const outReqSelector = {
     getOutReqSearchFieldData: (state) => {// получение значения поиска по запросам
         return state.outputRequests.outReqSearchFieldData
     },
+    getSortHeaderDirection: (state) => {// получение направления сортировки запросов
+        return state.outputRequests.sortHeaderDirection
+    },
+
 
 }
 
-export let getArrayFilteredByBtns = createSelector(
+let getArrayFilteredByBtns = createSelector(//  фильтрации по кнопкам
     [
         outReqSelector.getArray, // массив из объектов запросов перед фильтрацией
         outReqSelector.getActiveFiltBtn, // активная кнопка фильтрации для switch/case
         outReqSelector.getArrayFiltBtn // подстановка названий кнопок фильтрации в switch/case
     ],
-    (outputRequestsArray, outReqActiveFiltBtn, outReqArrayFiltBtn) => {
-        let outputRequestsArray1;
+    (outputRequestsArray, outReqActiveFiltBtn, outReqArrayFiltBtn) => {// то, что return входящие селекторы
+        let commonPart2 = (condition) => outputRequestsArray.filter(condition) // общая часть фильтрации
         switch (outReqActiveFiltBtn) {
-            case outReqArrayFiltBtn[1]: // экшн фильтрация списка запросов "Ьез ответов"
-                outputRequestsArray1 = outputRequestsArray.filter((item) => item.answers !== true)
-                return outputRequestsArray1;
+            case outReqArrayFiltBtn[1]: // экшн фильтрация списка запросов "Без ответов"
+                return commonPart2((item) => item.answers !== true)
             case outReqArrayFiltBtn[2]: // экшн фильтрация списка запросов "С ответами"
-                outputRequestsArray1 = outputRequestsArray.filter((item) => item.answers === true)
-                return outputRequestsArray1;
+                return commonPart2((item) => item.answers === true)
+            case outReqArrayFiltBtn[4]: // экшн фильтрация списка запросов "Архив"
+                return commonPart2((item) => item.archived === true)
             case outReqArrayFiltBtn[3]: // экшн фильтрация списка запросов "Старые" - один год от текущей даты
                 let pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
-                outputRequestsArray1 = outputRequestsArray.filter((item) => {
-                    let dateItem = new Date(item.dataList.date.replace(pattern, "$3-$2-$1")); // отобразить запись даты из стейта в формат, распознаваемый new Date
-                    let time = new Date().getTime()-86400000*365; // получить количество миллисекунд с 1970 года - 1 год
-                    let dateOld = new Date(time); // преобразовать в дату (1 год от текущей даты)
-                    return dateItem < dateOld //вернуть даты из списка старше года
+                let outputRequestsArray1 = outputRequestsArray.filter((item) => {
+                        let dateItem = new Date(item.dataList.date.replace(pattern, "$3-$2-$1")); // отобразить запись даты из стейта в формат, распознаваемый new Date
+                        let time = new Date().getTime() - 86400000 * 365; // получить количество миллисекунд с 1970 года - 1 год
+                        let dateOld = new Date(time); // преобразовать в дату (1 год от текущей даты)
+                        return dateItem < dateOld //вернуть даты из списка старше года
                     }
                 )
-                return outputRequestsArray1;
-            case outReqArrayFiltBtn[4]: // экшн фильтрация списка запросов "Архив"
-                outputRequestsArray1 = outputRequestsArray.filter((item) => item.archived === true)
                 return outputRequestsArray1;
             default: // Все запросы
                 return outputRequestsArray; // по умолчанию стейт возврашается неизмененным
         }
     })
 
-export let getArrayFilteredBySearchFieldAndButtons = createSelector(
+export let getArrayFilteredBySearchFieldAndButtons = createSelector( // фильтрация по полю поиска после фильтрации по кнопкам
     [
         getArrayFilteredByBtns, // массив после фильтрации по кнопкам
         outReqSelector.getOutReqSearchFieldData, // значение поля поиска по запросам
     ],
-    (outputRequestsArray, outReqSearchFieldData) => {
+    (outputRequestsArray, outReqSearchFieldData) => {// то, что return входящие селекторы
         let outputRequestsArray2 = outputRequestsArray.filter((item) =>
             item.dataList.name.toLowerCase().includes(outReqSearchFieldData.toLowerCase()))
         // поиск по вхождению части слова в поле Название товара по запросам независомо от регистра
         return outputRequestsArray2;
+    })
+
+export let getArrFiltSearchBtnsSortHeader = createSelector( // сортировка по заголовкам после фильтрации по кнопками и полю поиска
+    [
+        getArrayFilteredBySearchFieldAndButtons, // массив после фильтрации по кнопкам и полю поиска
+        outReqSelector.getActiveHeader, // активный заголовок сортировки
+        outReqSelector.getSortHeaderDirection, // направление сортировки заголовка
+    ],
+    (outputRequestsArray, activeOutReqHeader, sortHeaderDirection) => { // то, что return входящие селекторы
+        let outputRequestsArray3;
+        switch (activeOutReqHeader) {
+            case "Кол-во": // экшн сортировка по "Кол-во"
+                outputRequestsArray3 = outputRequestsArray.
+                slice().sort(//сделать копию
+                    (a, b) => {  // направление сортировки
+                        let commonPart1 = (ab) => parseInt(ab.dataList.qty.replace(/\s/g, "")) // вынес общую часть
+                        // parseInt - забрать только число //
+                        // dataList.qty - текущий путь в массиве в количеству
+                        // .replace(/\s/g, "") - сжать пробелы
+                        return sortHeaderDirection
+                            ? commonPart1(b) - commonPart1(a) // прямая сортировка
+                            : commonPart1(a) - commonPart1(b) // обратная сортировка
+                    }
+                );
+                return outputRequestsArray3;
+            case "Стоимость": // экшн сортировка по "Кол-во"
+                outputRequestsArray3 = outputRequestsArray.
+                slice().sort(//сделать копию
+                    (a, b) => {  // направление сортировки
+                        let commonPart1 = (ab) => parseInt(ab.dataList.cost.replace(/\s/g, "")) // вынес общую часть
+                        // parseInt - забрать только число //
+                        // dataList.cost - текущий путь в массиве в стоимости
+                        // .replace(/\s/g, "") - сжать пробелы
+                        return sortHeaderDirection
+                            ? commonPart1(b) - commonPart1(a) // прямая сортировка
+                            : commonPart1(a) - commonPart1(b) // обратная сортировка
+                    }
+                );
+                return outputRequestsArray3;
+            case "Дата": // экшн сортировка по "Дата"
+                outputRequestsArray3 = outputRequestsArray.
+                slice().sort(//сделать копию
+                    (a, b) => {   // направление сортировки
+                        let pattern = /(\d{2})\.(\d{2})\.(\d{4})/; // берем текущий паттерн даты
+                        let commonPart3 = (ab) => new Date(ab.dataList.date.replace(pattern, "$3-$2-$1")) // вынес общую часть
+                        //new Date - создаем дату
+                        // dataList.date - текущий путь в массиве к дате
+                        // .replace(pattern, "$3-$2-$1")) - преобразовать с помощью паттерна дату к виду YYYY-MM-DD
+                        return sortHeaderDirection
+                        ? commonPart3(b) - commonPart3(a) // прямая сортировка
+                        : commonPart3(a) - commonPart3(b) ; // обратная сортировка
+                });
+                return outputRequestsArray3;
+            default: // Все запросы
+                return outputRequestsArray; // по умолчанию стейт возврашается неизмененным
+        }
     })
 

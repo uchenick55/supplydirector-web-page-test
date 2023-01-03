@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./OutReqFilterButtons.module.css"
-import sort from "../../../../../assets/media/icons/sort1.jpg";
 
 let OutReqFilterButtons = ({outReqArrayFiltBtn, outReqActiveFiltBtn, setActiveFiltBtn}) => {
     //компонента кнопок фильтров по исходящим запросам

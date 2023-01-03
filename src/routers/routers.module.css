@@ -26,3 +26,7 @@
     position: relative;
     z-index:1;
 }
+
+.dotsStyle {
+    width: 30px;
+}
