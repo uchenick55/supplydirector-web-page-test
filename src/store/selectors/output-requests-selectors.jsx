@@ -77,67 +77,42 @@ export let getArrFiltSearchBtnsSortHeader = createSelector( // сортиров�
     ],
     (outputRequestsArray, activeOutReqHeader, sortHeaderDirection, outputRequestsArrayHeaders) => {
         // то, что return входящие селекторы
-        let outputRequestsArray3;
+        let commonPart1; // задание общей части
         let commonPart4 = (commonPart1, a, b) => {
-            let partA = commonPart1(a);
+            // parseInt - забрать только число
+            // dataList... - текущий путь в массиве к объекту
+            // .replace(/\s/g, "") - сжать пробелы
+            let partA = commonPart1(a); // два элемента для сравнения при сортировке
             let partB = commonPart1(b);
-            let compareResult = sortHeaderDirection
+            let compareResult = sortHeaderDirection // если прямая/обратная сортировка
                 ? (partA < partB) ? 1 : -1 // прямая сортировка
                 : (partA > partB) ? 1 : -1 // обратная сортировка
-            return compareResult
+            return compareResult // возврат 1 или -1 для сортировки
+        }
+        let commonPart5 = (commonPart1) => {
+            let outputRequestsArray3 = outputRequestsArray.sort(// сортируем массив объектов
+                (a, b) => {   // сравниваемые элементы
+                    return commonPart4(commonPart1, a, b) // упаковываем общую часть сортировки по заголовкам
+                });
+            return outputRequestsArray3;
         }
         switch (activeOutReqHeader) {
             case outputRequestsArrayHeaders[0]: // экшн сортировка по "Дата"
-                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
-                    (a, b) => {   // направление сортировки
-                        let pattern = /(\d{2})\.(\d{2})\.(\d{4})/; // берем текущий паттерн даты
-                        let commonPart1 = (ab) => new Date(ab.dataList.date.replace(pattern, "$3-$2-$1")) // вынес общую часть
-                        // parseInt - забрать только число //
-                        // dataList.qty - текущий путь в массиве в количеству
-                        // .replace(/\s/g, "") - сжать пробелы
-                        return commonPart4(commonPart1, a, b)
-                    });
-                return outputRequestsArray3;
+                let pattern = /(\d{2})\.(\d{2})\.(\d{4})/; // берем текущий паттерн даты
+                commonPart1 = (ab) => new Date(ab.dataList.date.replace(pattern, "$3-$2-$1"))
+                return commonPart5 (commonPart1) // можно смотреть что возвращается после сортировки
             case outputRequestsArrayHeaders[1]: // экшн сортировка по "Название товара"
-                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
-                    (a, b) => {  // направление сортировки
-                        let commonPart1 = (ab) => ab.dataList.name // вынес общую часть
-                        // dataList.name - текущий путь в массиве к имени
-                        return commonPart4(commonPart1, a, b)
-                    }
-                );
-                return outputRequestsArray3;
+                commonPart1 = (ab) => ab.dataList.name //путь к сортируемому элементу
+                return commonPart5 (commonPart1)
             case outputRequestsArrayHeaders[2]: // экшн сортировка по "Кол-во"
-                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
-                    (a, b) => {  // направление сортировки
-                        let commonPart1 = (ab) => parseInt(ab.dataList.qty.replace(/\s/g, "")) // вынес общую часть
-                        // parseInt - забрать только число //
-                        // dataList.qty - текущий путь в массиве в количеству
-                        // .replace(/\s/g, "") - сжать пробелы
-                        return commonPart4(commonPart1, a, b)
-                    }
-                );
-                return outputRequestsArray3;
+                commonPart1 = (ab) => parseInt(ab.dataList.qty.replace(/\s/g, ""))//путь к сортируемому элементу со сжиманием пробелов
+                return commonPart5 (commonPart1)
             case outputRequestsArrayHeaders[3]: // экшн сортировка по "Стоимость"
-                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
-                    (a, b) => {  // направление сортировки
-                        let commonPart1 = (ab) => parseInt(ab.dataList.cost.replace(/\s/g, "")) // вынес общую часть
-                        // parseInt - забрать только число
-                        // dataList.cost - текущий путь в массиве в стоимости
-                        // .replace(/\s/g, "") - сжать пробелы
-                        return commonPart4(commonPart1, a, b)
-                    }
-                );
-                return outputRequestsArray3;
+                commonPart1 = (ab) => parseInt(ab.dataList.cost.replace(/\s/g, ""))//путь к сортируемому элементу со сжиманием пробелов
+                return commonPart5 (commonPart1)
             case outputRequestsArrayHeaders[4]: // экшн сортировка по "Название товара"
-                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
-                    (a, b) => {  // направление сортировки
-                        let commonPart1 = (ab) => ab.responses // вынес общую часть
-                        // dataList.responses - текущий путь в массиве к responses
-                        return commonPart4(commonPart1, a, b)
-                    }
-                );
-                return outputRequestsArray3;
+                commonPart1 = (ab) => ab.responses //путь к сортируемому элементу
+                return commonPart5 (commonPart1)
             default: // Все запросы
                 return outputRequestsArray; // по умолчанию стейт возврашается неизмененным
         }
