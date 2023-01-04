@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./OutReqContainer.module.scss";
 import OutputRequests from "./OutputRequsts/OutputRequests";
 import {
+    markAsArchivedAC,
     removeOutReq,
     setActiveFiltBtnAC,
     setActiveHeaderAC,
@@ -23,8 +24,9 @@ class OutReqContainer extends React.Component {
     removeOutputRequest = (idRequest) => { // функция удаления исходящего запроса
         this.props.removeOutReq(idRequest)
     }
-    markAsArchived = (idRequest) => { // отметить как запрос как архивный
-        alert("Пометить исходящий запрос ID номер " + idRequest + " как архивный");
+    markAsArchived = (idRequest) => { // отметить запрос как архивный
+       // alert("Пометить исходящий запрос ID номер " + idRequest + " как архивный");
+        this.props.markAsArchivedAC(idRequest)
     }
     repeatRequest = (idRequest) => { // повторить исходящий запрос
         alert("повторить запрос ID номер " + idRequest);
@@ -91,5 +93,6 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC, setOutReqSearchFieldDataAC, setSortHeaderDirectionAC
+    removeOutReq, setActiveHeaderAC, setActiveFiltBtnAC, setOutReqSearchFieldDataAC,
+    setSortHeaderDirectionAC, markAsArchivedAC
 })(OutReqContainer)

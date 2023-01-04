@@ -9,7 +9,7 @@ import detailed from "../../../../../../assets/media/icons/dropdown-menu/detaile
 import styles from "./OutReqMenu.module.css"
 import {Redirect} from "react-router-dom";
 
-const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idRequest, name}) => {
+const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idRequest, archived}) => {
 
     let detailedRequest = (idRequest) => {
         alert("переход на страницу Подробнее для запроса " + idRequest)
@@ -19,7 +19,7 @@ const OutReqMenu = ({removeOutputRequest, markAsArchived, repeatRequest, idReque
 
     let LocalMenuDataArray = [ // локальный массив объектов, с данными меню для map
         {idMenu: 1, action: removeOutputRequest, text: "Удалить", picSrc: remove},
-        {idMenu: 2, action: markAsArchived, text: "В архив", picSrc: archive},
+        {idMenu: 2, action: markAsArchived, text: archived?"Из архива":"В архив", picSrc: archive},
         {idMenu: 3, action: repeatRequest, text: "Повторить", picSrc: repeat},
         {idMenu: 4, action: detailedRequest, text: "Подробнее", picSrc: detailed},
     ]
