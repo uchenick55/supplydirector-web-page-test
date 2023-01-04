@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/supplydirector-web-page-test/static/css/main.ecce61cf.css",
+    "main.js": "/supplydirector-web-page-test/static/js/main.12dd02de.js",
+    "static/media/Circe-ExtraLight.eot": "/supplydirector-web-page-test/static/media/Circe-ExtraLight.6c3219ca79801ef08de9.eot",
+    "static/media/Circe-ExtraLight.ttf": "/supplydirector-web-page-test/static/media/Circe-ExtraLight.ebd67d2efe733d578b2a.ttf",
+    "static/media/Circe-Thin.eot": "/supplydirector-web-page-test/static/media/Circe-Thin.eefc36289c50a95d2a93.eot",
+    "static/media/Circe-Thin.ttf": "/supplydirector-web-page-test/static/media/Circe-Thin.2ec80f01fb80921b533a.ttf",
+    "static/media/Circe-Light.eot": "/supplydirector-web-page-test/static/media/Circe-Light.240b5a69fbeb8ed40ae8.eot",
+    "static/media/Circe-Light.ttf": "/supplydirector-web-page-test/static/media/Circe-Light.6506d007ec39b92583d3.ttf",
+    "static/media/Circe-Regular.eot": "/supplydirector-web-page-test/static/media/Circe-Regular.71cfd659c0fa35837813.eot",
+    "static/media/Circe-Regular.ttf": "/supplydirector-web-page-test/static/media/Circe-Regular.da4c975f2e7df04af85e.ttf",
+    "static/media/Circe-Bold.eot": "/supplydirector-web-page-test/static/media/Circe-Bold.8e8d19d142d62eae80e0.eot",
+    "static/media/Circe-Bold.ttf": "/supplydirector-web-page-test/static/media/Circe-Bold.bcd01100961c0fac3f41.ttf",
+    "static/media/Circe-ExtraBold.eot": "/supplydirector-web-page-test/static/media/Circe-ExtraBold.f12c871450731a8d1656.eot",
+    "static/media/Circe-ExtraBold.ttf": "/supplydirector-web-page-test/static/media/Circe-ExtraBold.f0018424d4a5589bd236.ttf",
+    "static/media/Inter-Bold.ttf": "/supplydirector-web-page-test/static/media/Inter-Bold.88fa7ae373b07b41ecce.ttf",
+    "static/media/Inter-Regular.ttf": "/supplydirector-web-page-test/static/media/Inter-Regular.e89cb19905e7db5591b0.ttf",
+    "static/media/Circe-ExtraLight.woff": "/supplydirector-web-page-test/static/media/Circe-ExtraLight.be684ebfce140473425a.woff",
+    "static/media/Circe-Bold.woff": "/supplydirector-web-page-test/static/media/Circe-Bold.6ddc9bdec405a597ec3a.woff",
+    "static/media/Circe-Light.woff": "/supplydirector-web-page-test/static/media/Circe-Light.cbb12116cb45b47edd95.woff",
+    "static/media/Circe-Regular.woff": "/supplydirector-web-page-test/static/media/Circe-Regular.9696d045ce67564b392c.woff",
+    "static/media/Circe-ExtraBold.woff": "/supplydirector-web-page-test/static/media/Circe-ExtraBold.a554d71455a3be1cd607.woff",
+    "static/media/Circe-Thin.woff": "/supplydirector-web-page-test/static/media/Circe-Thin.a23f5cdb9653d0e83259.woff",
+    "static/media/remove4.png": "/supplydirector-web-page-test/static/media/remove4.384cb6114d7c065edce8.png",
+    "static/media/repeat1.png": "/supplydirector-web-page-test/static/media/repeat1.f80ebb3f3742b86ffc7a.png",
+    "static/media/responces.jpg": "/supplydirector-web-page-test/static/media/responces.88b89ece27f4fbcab18f.jpg",
+    "static/media/Spin-1s-64px.svg": "/supplydirector-web-page-test/static/media/Spin-1s-64px.a1153134be4fea262f7848efad14bf69.svg",
+    "index.html": "/supplydirector-web-page-test/index.html",
+    "main.ecce61cf.css.map": "/supplydirector-web-page-test/static/css/main.ecce61cf.css.map",
+    "main.12dd02de.js.map": "/supplydirector-web-page-test/static/js/main.12dd02de.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ecce61cf.css",
+    "static/js/main.12dd02de.js"
+  ]
+}
