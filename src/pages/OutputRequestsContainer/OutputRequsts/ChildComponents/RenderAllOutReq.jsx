@@ -13,7 +13,7 @@ let RenderAllOutReq = ({
     let outputRequestsElements = outputRequestsArray.map((d) => // подкомпонента отрисовки всех диалогов через map
         {
             return <SingleOutReq // отрисовка отдельного исходящего запроса с пропсами
-                key={d.idRequest} idRequest={d.idRequest} dataList={d.dataList} answers={d.answers} archived={d.archived}
+                key={d.idRequest} idRequest={d.idRequest} dataList={d.dataList} responses={d.responses} archived={d.archived}
                 removeOutputRequest={removeOutputRequest}
                 markAsArchived={markAsArchived} // маркировакть как архивный исходящий запрос
                 repeatRequest={repeatRequest} // повторить запрос

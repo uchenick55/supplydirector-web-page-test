@@ -24,7 +24,6 @@ export const outReqSelector = {
         return state.outputRequests.sortHeaderDirection
     },
 
-
 }
 
 let getArrayFilteredByBtns = createSelector(//  фильтрации по кнопкам
@@ -37,9 +36,9 @@ let getArrayFilteredByBtns = createSelector(//  фильтрации по кно
         let commonPart2 = (condition) => outputRequestsArray.filter(condition) // общая часть фильтрации
         switch (outReqActiveFiltBtn) {
             case outReqArrayFiltBtn[1]: // экшн фильтрация списка запросов "Без ответов"
-                return commonPart2((item) => item.answers !== true)
+                return commonPart2((item) => item.responses !== true)
             case outReqArrayFiltBtn[2]: // экшн фильтрация списка запросов "С ответами"
-                return commonPart2((item) => item.answers === true)
+                return commonPart2((item) => item.responses === true)
             case outReqArrayFiltBtn[4]: // экшн фильтрация списка запросов "Архив"
                 return commonPart2((item) => item.archived === true)
             case outReqArrayFiltBtn[3]: // экшн фильтрация списка запросов "Старые" - один год от текущей даты
@@ -78,60 +77,81 @@ export let getArrFiltSearchBtnsSortHeader = createSelector( // сортиров�
     (outputRequestsArray, activeOutReqHeader, sortHeaderDirection) => { // то, что return входящие селекторы
         let outputRequestsArray3;
         switch (activeOutReqHeader) {
+            case "Дата": // экшн сортировка по "Дата"
+                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
+                    (a, b) => {   // направление сортировки
+                        let pattern = /(\d{2})\.(\d{2})\.(\d{4})/; // берем текущий паттерн даты
+                        let commonPart1 = (ab) => new Date(ab.dataList.date.replace(pattern, "$3-$2-$1")) // вынес общую часть
+                        //new Date - создаем дату
+                        // dataList.date - текущий путь в массиве к дате
+                        // .replace(pattern, "$3-$2-$1")) - преобразовать с помощью паттерна дату к виду YYYY-MM-DD
+                        let partA = commonPart1(a);
+                        let partB = commonPart1(b);
+                        let compareResult = sortHeaderDirection
+                            ? partB > partA // прямая сортировка
+                            : partA > partB; // обратная сортировка
+                        return compareResult
+                    });
+                return outputRequestsArray3;
+            case "Название товара": // экшн сортировка по "Название товара"
+                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
+                    (a, b) => {  // направление сортировки
+                        let commonPart1 = (ab) => ab.dataList.name // вынес общую часть
+                        // dataList.name - текущий путь в массиве к имени
+                        let partB = commonPart1(b);
+                        let partA = commonPart1(a);
+                        let compareResult = sortHeaderDirection
+                            ? partB < partA // прямая сортировка
+                            : partA < partB // обратная сортировка
+                        return compareResult
+                    }
+                );
+                return outputRequestsArray3;
             case "Кол-во": // экшн сортировка по "Кол-во"
-                outputRequestsArray3 = outputRequestsArray.
-                slice().sort(//сделать копию
+                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
                     (a, b) => {  // направление сортировки
                         let commonPart1 = (ab) => parseInt(ab.dataList.qty.replace(/\s/g, "")) // вынес общую часть
                         // parseInt - забрать только число //
                         // dataList.qty - текущий путь в массиве в количеству
                         // .replace(/\s/g, "") - сжать пробелы
-                        return sortHeaderDirection
-                            ? commonPart1(b) - commonPart1(a) // прямая сортировка
-                            : commonPart1(a) - commonPart1(b) // обратная сортировка
+                        let partB = commonPart1(b);
+                        let partA = commonPart1(a);
+                        let compareResult = sortHeaderDirection
+                            ? (partA < partB) ? 1 : -1 // прямая сортировка
+                            : (partA > partB) ? 1 : -1 // обратная сортировка
+                        return compareResult
                     }
                 );
                 return outputRequestsArray3;
             case "Стоимость": // экшн сортировка по "Стоимость"
-                outputRequestsArray3 = outputRequestsArray.
-                slice().sort(//сделать копию
+                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
                     (a, b) => {  // направление сортировки
                         let commonPart1 = (ab) => parseInt(ab.dataList.cost.replace(/\s/g, "")) // вынес общую часть
                         // parseInt - забрать только число //
                         // dataList.cost - текущий путь в массиве в стоимости
                         // .replace(/\s/g, "") - сжать пробелы
-                        return sortHeaderDirection
-                            ? commonPart1(b) - commonPart1(a) // прямая сортировка
-                            : commonPart1(a) - commonPart1(b) // обратная сортировка
+                        let partB = commonPart1(b);
+                        let partA = commonPart1(a);
+                        let compareResult = sortHeaderDirection
+                            ? (partA < partB) ? 1 : -1 // прямая сортировка
+                            : (partA > partB) ? 1 : -1 // обратная сортировка
+                        return compareResult
                     }
                 );
                 return outputRequestsArray3;
-            case "Название товара": // экшн сортировка по "Название товара"
-                outputRequestsArray3 = outputRequestsArray.
-                slice().sort(//сделать копию
+            case "Ответы": // экшн сортировка по "Название товара"
+                outputRequestsArray3 = outputRequestsArray.slice().sort(//сделать копию
                     (a, b) => {  // направление сортировки
-                        let commonPart1 = (ab) => (ab.dataList.name) // вынес общую часть
-                        // parseInt - забрать только число //
-                        // dataList.name - текущий путь в массиве к имени
-                        return sortHeaderDirection
-                            ? commonPart1(b) - commonPart1(a) // прямая сортировка
-                            : commonPart1(a) - commonPart1(b) // обратная сортировка
+                        let commonPart1 = (ab) => ab.responses // вынес общую часть
+                        // dataList.responses - текущий путь в массиве к responses
+                        let partA = commonPart1(a);
+                        let partB = commonPart1(b);
+                        let compareResult = sortHeaderDirection
+                            ? (partA === partB) ? 0 : partB ? 1 : -1 // прямая сортировка
+                            : (partA === partB) ? 0 : partA ? 1 : -1 // обратная сортировка
+                        return compareResult
                     }
                 );
-                return outputRequestsArray3;
-            case "Дата": // экшн сортировка по "Дата"
-                outputRequestsArray3 = outputRequestsArray.
-                slice().sort(//сделать копию
-                    (a, b) => {   // направление сортировки
-                        let pattern = /(\d{2})\.(\d{2})\.(\d{4})/; // берем текущий паттерн даты
-                        let commonPart3 = (ab) => new Date(ab.dataList.date.replace(pattern, "$3-$2-$1")) // вынес общую часть
-                        //new Date - создаем дату
-                        // dataList.date - текущий путь в массиве к дате
-                        // .replace(pattern, "$3-$2-$1")) - преобразовать с помощью паттерна дату к виду YYYY-MM-DD
-                        return sortHeaderDirection
-                        ? commonPart3(b) - commonPart3(a) // прямая сортировка
-                        : commonPart3(a) - commonPart3(b) ; // обратная сортировка
-                });
                 return outputRequestsArray3;
             default: // Все запросы
                 return outputRequestsArray; // по умолчанию стейт возврашается неизмененным

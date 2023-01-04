@@ -4,7 +4,7 @@ import styles from "./SingleOutReq.module.css"
 import responces from "./../../../../../assets/media/images/responces.jpg"
 
 let SingleOutReq = ({
-                               idRequest, answers,
+                               idRequest, responses,
                                removeOutputRequest, markAsArchived, repeatRequest, dataList
                            }) => {
     let goToResponces = () => {
@@ -21,7 +21,7 @@ let SingleOutReq = ({
             return <RenderDataList key={value.toString()} value={value}/>
         })}
 
-        <div>{answers // если ответы есть (true)
+        <div>{responses // если ответы есть (true)
             ? <div> <img className={styles.responcesImgStyle} src={responces} onClick={goToResponces} alt=""/></div>
                 // отрисовка картинки ответов с onClick реакцией
             : <div className={styles.fontFormating}>Нет ответов</div> }</div>

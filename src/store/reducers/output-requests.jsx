@@ -41,7 +41,7 @@ const initialState = {//инициализационный стейт
                 qty: "10 000 шт.",
                 cost: "15 000 ₽ - 220 000 ₽"
             },
-            answers: true,
+            responses: true,
             archived: false
         },
         {
@@ -52,7 +52,7 @@ const initialState = {//инициализационный стейт
                 qty: "1 000 шт.",
                 cost: "10 000 ₽ - 220 000 ₽",
             },
-            answers: false,
+            responses: false,
             archived: true
         },
         {
@@ -63,7 +63,7 @@ const initialState = {//инициализационный стейт
                 qty: "10 шт.",
                 cost: "20 000 ₽ - 220 000 ₽",
             },
-            answers: false,
+            responses: false,
             archived: false
         },
         {
@@ -74,7 +74,7 @@ const initialState = {//инициализационный стейт
                 qty: "100 шт.",
                 cost: "5 000 ₽ - 220 000 ₽",
             },
-            answers: false,
+            responses: true,
             archived: false
         },
     ],
