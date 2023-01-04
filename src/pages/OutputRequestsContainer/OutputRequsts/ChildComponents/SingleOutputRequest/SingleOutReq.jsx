@@ -11,8 +11,7 @@ let SingleOutReq = ({
          alert("редирект на ответы ID " + idRequest ) // имитация перехода на ответы по запросу
     }
 
-    let RenderDataList = ({value}) => {
-        {/*вывод однотипных запросов*/}
+    let RenderDataList = ({value}) => { //вывод однотипных запросов
         return  <div className={styles.fontFormating}>{value}</div>;
     }
 
@@ -33,7 +32,6 @@ let SingleOutReq = ({
             idRequest={idRequest} // id запроса
         />
         </div>
-
     </div>
 }
 

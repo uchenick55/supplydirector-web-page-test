@@ -2,10 +2,10 @@ import Dropdown from "rc-dropdown"; // импорт выпадающего ме�
 import "rc-dropdown/assets/index.css"; // импорт стилей, возможно удалю
 import React, {useState} from "react";
 import dots from "../../../../../../assets/media/icons/dropdown-menu/dots.jpg"
-import remove from "../../../../../../assets/media/icons/dropdown-menu/remove.jpg"
-import archive from "../../../../../../assets/media/icons/dropdown-menu/archive.jpg"
-import repeat from "../../../../../../assets/media/icons/dropdown-menu/repeat.jpg"
-import detailed from "../../../../../../assets/media/icons/dropdown-menu/detailed.jpg"
+import remove from "../../../../../../assets/media/icons/dropdown-menu/remove4.png"
+import archive from "../../../../../../assets/media/icons/dropdown-menu/archive3.png"
+import repeat from "../../../../../../assets/media/icons/dropdown-menu/repeat1.png"
+import detailed from "../../../../../../assets/media/icons/dropdown-menu/detailed1.png"
 import styles from "./OutReqMenu.module.css"
 import {Redirect} from "react-router-dom";
 

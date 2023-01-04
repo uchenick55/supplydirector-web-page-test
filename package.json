@@ -1,8 +1,8 @@
 {
+  "homepage": "https://uchenick55.github.io/supplydirector-web-page-test/",
   "name": "neochainer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://neochainer.space/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "4.2.4",
@@ -27,6 +27,8 @@
     "web-vitals": "2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -58,7 +60,7 @@
     "babel-loader": "^8.0.0-beta.0",
     "css-loader": "^2.1.1",
     "file-loader": "^4.0.0",
-    "gh-pages": "3.2.3",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

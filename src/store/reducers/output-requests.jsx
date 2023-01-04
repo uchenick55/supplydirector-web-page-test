@@ -47,7 +47,7 @@ const initialState = {//инициализационный стейт
         {
             idRequest: 2,
             dataList: {
-                date: "27.06.2020",
+                date: "27.06.2021",
                 name: "Гайка оцинкованная М16",
                 qty: "1 000 шт.",
                 cost: "10 000 ₽ - 220 000 ₽",
@@ -58,7 +58,7 @@ const initialState = {//инициализационный стейт
         {
             idRequest: 3,
             dataList: {
-                date: "27.06.2021",
+                date: "27.06.2020",
                 name: "Пульсоксиметр Contec CMS 50D2",
                 qty: "10 шт.",
                 cost: "20 000 ₽ - 220 000 ₽",

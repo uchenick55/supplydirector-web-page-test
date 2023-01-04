@@ -24,10 +24,10 @@ class OutReqContainer extends React.Component {
         this.props.removeOutReq(idRequest)
     }
     markAsArchived = (idRequest) => { // отметить как запрос как архивный
-        alert("Пометить исходящий запрос номер " + idRequest + " как архивный");
+        alert("Пометить исходящий запрос ID номер " + idRequest + " как архивный");
     }
     repeatRequest = (idRequest) => { // повторить исходящий запрос
-        alert("повторить запрос номер " + idRequest);
+        alert("повторить запрос ID номер " + idRequest);
 
     }
     setOutReqFormData = (outReqSearchFieldData) => { // ввод в поисковой строке отображается в консоли
