@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/supplydirector-web-page-test/static/css/main.34c6fe17.css",
-    "main.js": "/supplydirector-web-page-test/static/js/main.07091a7d.js",
+    "main.js": "/supplydirector-web-page-test/static/js/main.10e82e92.js",
     "static/media/Circe-ExtraLight.eot": "/supplydirector-web-page-test/static/media/Circe-ExtraLight.6c3219ca79801ef08de9.eot",
     "static/media/Circe-ExtraLight.ttf": "/supplydirector-web-page-test/static/media/Circe-ExtraLight.ebd67d2efe733d578b2a.ttf",
     "static/media/Circe-Thin.eot": "/supplydirector-web-page-test/static/media/Circe-Thin.eefc36289c50a95d2a93.eot",
@@ -28,10 +28,10 @@
     "static/media/Spin-1s-64px.svg": "/supplydirector-web-page-test/static/media/Spin-1s-64px.a1153134be4fea262f7848efad14bf69.svg",
     "index.html": "/supplydirector-web-page-test/index.html",
     "main.34c6fe17.css.map": "/supplydirector-web-page-test/static/css/main.34c6fe17.css.map",
-    "main.07091a7d.js.map": "/supplydirector-web-page-test/static/js/main.07091a7d.js.map"
+    "main.10e82e92.js.map": "/supplydirector-web-page-test/static/js/main.10e82e92.js.map"
   },
   "entrypoints": [
     "static/css/main.34c6fe17.css",
-    "static/js/main.07091a7d.js"
+    "static/js/main.10e82e92.js"
   ]
 }
